@@ -375,6 +375,10 @@ const fmt = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',
 const fmtP = n => ((n||0)*100).toFixed(2)+'%';
 const clean = s => parseFloat((s+'').replace(/[$,%\s,]/g,'')) || 0;
 
+// ─────────────────────────────────────────────────────────────────────────────
+
+function toggleKey() {}
+
 // ── Mode ──────────────────────────────────────────────────────────────────────
 function setMode(m) {
   mode = m;
@@ -510,14 +514,31 @@ async function generate() {
     return;
   }
 
-  // PDF path
+  // PDF path — uses hardcoded key
+  if (!pdfFile) { showErr('Please upload a merchant statement PDF, or switch to manual entry.'); return; }
+  if (!CF_API_TOKEN || CF_API_TOKEN.includes('cfat_ujhFviXzLYMoPoYolyagEUSRJfgBOSWpZH7o2Bczee4be955')) {
+    showErr('Tool not configured. Please use manual entry or contact your manager.');
+    return;
+  }
   if (!pdfFile) { showErr('Please upload a merchant statement PDF, or switch to manual entry.'); return; }
   showLoader('Reading your statement...');
   try {
-    const b64 = await toB64(pdfFile);
+    // Step 1: Extract text from PDF using pdf.js (runs in browser, no API needed)
+    document.getElementById('loaderMsg').textContent = 'Extracting text from PDF...';
+    const pdfText = await extractPDFText(pdfFile);
+    if (!pdfText || pdfText.length < 50) {
+      showErr('Could not read text from this PDF. Please use manual entry instead.');
+      showForm(); return;
+    }
+
+    // Step 2: Send extracted text to Cloudflare Workers AI (Llama)
     document.getElementById('loaderMsg').textContent = 'AI analyzing fees & volume...';
-    const res = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST', headers:{'Content-Type':'application/json'},
+    const res = await fetch(CF_AI_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${CF_API_TOKEN}`
+      },
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514', max_tokens:1000,
         system:`You are a merchant services analyst. Extract data from this processing statement.
