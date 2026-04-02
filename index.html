@@ -270,12 +270,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 // PASTE YOUR CLOUDFLARE WORKERS AI TOKEN BETWEEN THE QUOTES BELOW
 // =====================================================================
 var CF_ACCOUNT_ID = 'ffb1977fe0726e1d120c3c1c52503707';
-var CF_API_TOKEN  = 'cfat_ujhFviXzLYMoPoYolyagEUSRJfgBOSWpZH7o2Bczee4be955';
+var CF_API_TOKEN  = 'PASTE-TOKEN-HERE';
 // =====================================================================
 </script>
 <script>
 
-var CF_AI_URL = 'https://api.cloudflare.com/client/v4/accounts/' + CF_ACCOUNT_ID + '/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast';
+var CF_WORKER_URL = 'https://wp-proxy.colemanclarksr.workers.dev';
 
 // Constants
 var WP    = {pctAboveIC:0.0025, txn:0.05, monthly:11.95};
@@ -426,7 +426,7 @@ async function generate(){
     showLoader('AI analyzing your statement...');
     var res = await fetch(CF_AI_URL,{
       method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+CF_API_TOKEN},
+      headers: { 'Content-Type': 'application/json' },
       body:JSON.stringify({
         messages:[
           {role:'system',content:'You are a merchant services analyst. Extract data from this processing statement text. Return ONLY a raw JSON object — no markdown, no backticks, no extra text. Structure: {"businessName":"string","statementPeriod":"string","monthlyVolume":number,"totalFees":number,"numTransactions":number,"cardMix":{"visa":0.4,"mc":0.3,"amex":0.2,"discover":0.1}} cardMix must sum to 1.0. Use defaults visa=0.4,mc=0.3,amex=0.2,discover=0.1 if not stated. businessName default: Valued Merchant. Estimate numTransactions from avg $85 ticket if missing.'},
@@ -607,4 +607,3 @@ function buildPrintHTML(d){
 </script>
 </body>
 </html>
-
