@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#1B3554"/>
+<title>WP Rate Review</title>
+<style>
+:root{
+  --blue:#2B7CC3;--blueDk:#1A5FA0;--blueBg:#1B3554;
+  --teal:#35A87A;--tealLt:#4EC9A0;--green:#5CC87A;
+  --blueText:#A8C8E8;--bluePale:#EAF3FB;--tealPale:#E8F8F2;
+  --gray:#909090;--border:#dce8f5;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f0f4f8;min-height:100vh;color:#222;overflow-x:hidden}
+
+/* ── FORM ── */
+#formView{max-width:560px;margin:0 auto;padding:env(safe-area-inset-top,20px) 16px 40px}
+.logo-wrap{text-align:center;padding:24px 0 16px}
+.logo-mark{display:inline-flex;align-items:center;gap:10px}
+.logo-text .t1{font-size:28px;font-weight:900;color:#1a1a1a;line-height:1;letter-spacing:-.5px}
+.logo-text .t2{font-size:22px;font-weight:400;color:var(--gray);line-height:1}
+.subtitle{font-size:12px;color:var(--gray);margin-top:6px;font-style:italic}
+
+.card{background:#f7fafd;border-radius:14px;padding:18px;margin-bottom:14px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.card-title{font-weight:700;font-size:14px;color:var(--blueDk);margin-bottom:14px}
+
+.mode-tabs{display:flex;gap:8px;margin-bottom:16px}
+.mode-tab{flex:1;padding:13px 8px;border-radius:10px;border:2px solid var(--border);background:#fafcff;color:#555;font-weight:500;font-size:14px;cursor:pointer;transition:all .15s;text-align:center}
+.mode-tab.active{border-color:var(--teal);background:var(--blueBg);color:var(--tealLt);font-weight:700}
+
+.upload-zone{border:2px dashed var(--blue);background:var(--bluePale);border-radius:12px;padding:28px 16px;text-align:center;cursor:pointer;transition:all .2s;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.upload-zone.has-file{border-color:var(--teal);background:var(--tealPale)}
+.upload-zone .uz-icon{font-size:36px}
+.upload-zone .uz-label{font-size:15px;color:#666;font-weight:500}
+.upload-zone .uz-hint{font-size:12px;color:#aaa}
+.upload-zone .uz-fname{font-size:13px;font-weight:600;color:var(--teal);word-break:break-all;padding:0 8px}
+
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;font-weight:700;color:#555;margin-bottom:5px;text-transform:uppercase;letter-spacing:.6px}
+.field input{width:100%;padding:14px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;outline:none;background:#fff;transition:border .15s;-webkit-appearance:none;appearance:none}
+.field input:focus{border-color:var(--blue)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.four-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.btn-generate{width:100%;padding:18px;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:900;cursor:pointer;letter-spacing:.4px;box-shadow:0 4px 18px rgba(43,124,195,.4);-webkit-appearance:none;margin-top:4px}
+.btn-generate:active{transform:scale(.98)}
+
+.err{background:#fff0f0;color:#c62828;padding:13px;border-radius:10px;margin-bottom:14px;font-size:14px;border:1px solid #fecaca}
+
+/* ── LOADER ── */
+#loaderView{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px;padding:40px}
+.loader-msg{font-size:18px;font-weight:700;color:var(--blueDk);text-align:center}
+.dots{display:flex;gap:8px;margin-top:4px}
+.dot{width:10px;height:10px;border-radius:50%;animation:bounce .9s infinite}
+.dot:nth-child(1){background:var(--blue);animation-delay:0s}
+.dot:nth-child(2){background:var(--teal);animation-delay:.2s}
+.dot:nth-child(3){background:var(--green);animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* ── REVIEW ── */
+#reviewView{display:none}
+.toolbar{background:var(--blueBg);padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.tb-profits{display:flex;gap:6px}
+.pb{background:rgba(53,168,122,.15);border:1px solid var(--teal);border-radius:8px;padding:5px 10px;text-align:center;min-width:90px}
+.pb .pbl{font-size:9px;font-weight:700;color:var(--tealLt);text-transform:uppercase}
+.pb .pbv{font-size:14px;font-weight:900;color:var(--tealLt)}
+.pb .pbs{font-size:9px;color:#6ee7b7}
+.tb-btns{display:flex;gap:6px}
+.tbtn{padding:9px 13px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;border:none;white-space:nowrap;-webkit-appearance:none}
+.tbtn:active{transform:scale(.96)}
+.tbtn-out{background:transparent;border:1.5px solid var(--tealLt);color:var(--tealLt)}
+.tbtn-share{background:rgba(78,201,160,.2);border:1.5px solid var(--tealLt);color:var(--tealLt)}
+.tbtn-pdf{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;box-shadow:0 2px 8px rgba(43,124,195,.4)}
+
+/* PAGE LAYOUT */
+.page{background:#fff;font-size:12px;max-width:860px;margin:0 auto}
+.page-hdr{background:linear-gradient(120deg,var(--blueBg),#1E4A6E);padding:16px 20px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.hdr-tag{font-size:10px;color:var(--tealLt);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.hdr-biz{font-size:20px;font-weight:900;color:#fff;line-height:1.2}
+.hdr-period{font-size:11px;color:var(--blueText);margin-top:3px}
+.hdr-rep{text-align:right}
+.hdr-rep-name{font-size:14px;font-weight:800;color:#fff;margin-top:6px}
+.hdr-rep-info{font-size:12px;color:var(--blueText);margin-top:2px}
+
+.body-grid{padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.body-grid{grid-template-columns:1fr}}
+
+.sec{background:#f7fafd;border-radius:10px;padding:12px 13px;border:1px solid var(--border)}
+.sec-ttl{font-weight:800;font-size:11px;color:var(--blueDk);border-bottom:2px solid var(--blue);padding-bottom:5px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.5px}
+.sec-ttl.green{border-color:var(--teal)}
+
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+.metric{background:#fff;border-radius:7px;padding:8px 9px;border:1px solid var(--border)}
+.metric .ml{font-size:9px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.metric .mv{font-size:14px;font-weight:800;color:var(--blueDk);margin-top:2px}
+
+.ict{width:100%;border-collapse:collapse}
+.ict td{padding:4px 2px}
+.ict tr{border-bottom:1px solid #eef2f8}
+.ict .ict-tot td{font-weight:800;color:var(--blueDk);padding:5px 2px;border-top:1px solid var(--border)}
+
+.overpay{background:#fff8e1;border:2px solid #f59e0b;border-radius:10px;padding:13px;text-align:center}
+.ov-tag{font-size:10px;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:1px}
+.ov-amt{font-size:28px;font-weight:900;color:#b45309;line-height:1.1;margin-top:3px}
+.ov-yr{font-size:14px;font-weight:800;color:#92400e;margin-top:2px}
+.ov-sub{font-size:10px;color:#a16207;margin-top:2px}
+
+.opt1-box{background:var(--tealPale);border:2px solid var(--teal);border-radius:10px;padding:12px 13px;flex:1}
+.opt1-ttl{font-weight:900;font-size:11px;color:#1a5c3a;margin-bottom:5px;text-transform:uppercase}
+.opt1-formula{font-size:10px;color:#2d6a4f;background:#d4f5e3;padding:4px 8px;border-radius:5px;margin-bottom:8px}
+.opt1-nums{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.opt1-num{background:#fff;border-radius:7px;padding:8px;text-align:center}
+.opt1-num .nl{font-size:9px;color:#888;text-transform:uppercase}
+.opt1-num .nv{font-size:15px;font-weight:800;color:var(--teal)}
+.opt1-save{margin-top:8px;background:linear-gradient(135deg,var(--teal),var(--green));color:#fff;border-radius:7px;padding:8px;text-align:center;font-weight:900;font-size:13px}
+
+.opt2-box{background:var(--bluePale);border:2px solid var(--blue);border-radius:10px;padding:12px 13px}
+.opt2-ttl{font-weight:900;font-size:11px;color:var(--blueDk);text-transform:uppercase;margin-bottom:8px}
+.opt2-nums{display:flex;gap:7px;margin-bottom:9px}
+.opt2-num{flex:1;background:#fff;border-radius:7px;padding:8px;text-align:center}
+.opt2-num .nl{font-size:9px;color:#888;text-transform:uppercase}
+.opt2-num .nv{font-size:16px;font-weight:900}
+
+.ticket-box{background:#fff;border:2px solid var(--blue);border-radius:9px;padding:10px 12px;margin-bottom:9px;display:flex;align-items:center;gap:12px}
+.tkt-l{text-align:center;min-width:72px;flex-shrink:0}
+.tkt-l .tl{font-size:9px;color:#888;text-transform:uppercase;font-weight:600}
+.tkt-l .ta{font-size:22px;font-weight:900;color:var(--blue);line-height:1.1}
+.tkt-l .ts{font-size:9px;color:#777;margin-top:1px}
+.tkt-r{font-size:11px;color:var(--blueDk);line-height:1.6;border-left:2px solid var(--border);padding-left:12px}
+
+.present-box{font-size:11px;color:#1e40af;background:#dbeafe;padding:9px 11px;border-radius:8px;line-height:1.7}
+.present-ttl{font-weight:800;margin-bottom:4px;color:var(--blueDk)}
+.present-q{font-style:italic;margin-bottom:5px}
+.present-warn{font-size:10px;color:#3b82f6;font-weight:600}
+
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th{padding:7px;font-size:11px;font-weight:700}
+.cmp-table td{padding:7px;font-size:11px}
+
+.page-cta{background:linear-gradient(120deg,var(--blueBg),#1E4A6E);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.cta-msg{font-size:18px;font-weight:900;color:#fff}
+.cta-sub{font-size:11px;color:var(--blueText);margin-top:2px}
+.cta-card{text-align:right;background:rgba(78,201,160,.1);border-radius:9px;padding:10px 14px;border:1px solid rgba(78,201,160,.35)}
+.cta-name{font-size:14px;font-weight:900;color:#fff}
+.cta-ph{font-size:12px;color:var(--tealLt);margin-top:2px}
+.cta-em{font-size:11px;color:var(--blueText)}
+
+/* mobile tap sizing */
+@media(max-width:480px){
+  .tbtn{padding:10px 11px;font-size:12px}
+  .page-hdr{padding:14px 14px}
+  .body-grid{padding:10px}
+}
+@media print{
+  .toolbar{display:none!important}
+  body{background:#fff}
+  .page{max-width:100%!important;box-shadow:none}
+  @page{size:letter landscape;margin:.4in}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ FORM ════════════════════════════════════════════════════════════════ -->
+<div id="formView">
+  <div class="logo-wrap">
+    <div class="logo-mark">
+      <svg width="38" height="66" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2B7CC3"/><stop offset="100%" stop-color="#3BAED4"/></linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35A87A"/><stop offset="100%" stop-color="#5CC87A"/></linearGradient>
+          <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CC87A"/><stop offset="100%" stop-color="#83DFA0"/></linearGradient>
+        </defs>
+        <rect x="0" y="10" width="16" height="80" rx="3" fill="url(#g1)"/>
+        <rect x="22" y="0" width="20" height="90" rx="3" fill="url(#g2)"/>
+        <rect x="48" y="18" width="12" height="64" rx="3" fill="url(#g3)"/>
+      </svg>
+      <div class="logo-text"><div class="t1">wholesale</div><div class="t2">payments</div></div>
+    </div>
+    <div class="subtitle">Merchant Rate Review Generator</div>
+  </div>
+
+  <!-- Statement card -->
+  <div class="card">
+    <div class="card-title">📄 Statement Data</div>
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tabUpload" onclick="setMode('upload')">📎 Upload PDF</button>
+      <button class="mode-tab" id="tabManual" onclick="setMode('manual')">✏️ Enter Manually</button>
+    </div>
+
+    <!-- Upload -->
+    <div id="uploadMode">
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('pdfInput').click()">
+        <div class="uz-icon">📎</div>
+        <div class="uz-label">Tap to upload PDF</div>
+        <div class="uz-hint">Files app · Photos · Email attachments</div>
+      </div>
+      <input type="file" id="pdfInput" accept=".pdf,application/pdf" style="display:none" onchange="handleFile(this)"/>
+    </div>
+
+    <!-- Manual -->
+    <div id="manualMode" style="display:none">
+      <div class="field"><label>Business Name</label><input type="text" id="mBiz" placeholder="Merchant Business Name" autocomplete="organization"/></div>
+      <div class="field"><label>Statement Period</label><input type="text" id="mPeriod" placeholder="e.g. March 2025"/></div>
+      <div class="two-col">
+        <div class="field"><label>Monthly Volume ($)</label><input type="text" inputmode="decimal" id="mVol" placeholder="50,000"/></div>
+        <div class="field"><label>Total Monthly Fees ($)</label><input type="text" inputmode="decimal" id="mFees" placeholder="1,800"/></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label># Transactions</label><input type="text" inputmode="numeric" id="mTxns" placeholder="Leave blank to estimate"/></div>
+        <div class="field"><label>Avg Ticket ($) <span style="font-weight:400;text-transform:none;font-size:10px">(optional)</span></label><input type="text" inputmode="decimal" id="mTicket" placeholder="85"/></div>
+      </div>
+      <div class="card-title" style="margin-top:6px;margin-bottom:10px">Card Mix % (total = 100)</div>
+      <div class="four-col">
+        <div class="field"><label>Visa %</label><input type="text" inputmode="numeric" id="mVisa" placeholder="40"/></div>
+        <div class="field"><label>Mastercard %</label><input type="text" inputmode="numeric" id="mMC" placeholder="30"/></div>
+        <div class="field"><label>Amex %</label><input type="text" inputmode="numeric" id="mAmex" placeholder="20"/></div>
+        <div class="field"><label>Discover %</label><input type="text" inputmode="numeric" id="mDisc" placeholder="10"/></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rep Info -->
+  <div class="card">
+    <div class="card-title">👤 Sales Rep Info</div>
+    <div class="field"><label>Rep Name</label><input type="text" id="repName" placeholder="Jane Smith" autocomplete="name"/></div>
+    <div class="field"><label>Phone</label><input type="tel" id="repPhone" placeholder="(555) 123-4567" autocomplete="tel" oninput="fmtPhone(this)"/></div>
+    <div class="field"><label>Email</label><input type="email" id="repEmail" placeholder="jane@wholesalepayments.com" autocomplete="email" autocapitalize="none"/></div>
+  </div>
+
+  <div class="err" id="errBox" style="display:none"></div>
+  <button class="btn-generate" onclick="generate()">GENERATE RATE REVIEW →</button>
+</div>
+
+<!-- ══ LOADER ══════════════════════════════════════════════════════════════ -->
+<div id="loaderView">
+  <svg width="52" height="90" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg" style="animation:spin 1.3s linear infinite">
+    <defs>
+      <linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2B7CC3"/><stop offset="100%" stop-color="#3BAED4"/></linearGradient>
+      <linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35A87A"/><stop offset="100%" stop-color="#5CC87A"/></linearGradient>
+      <linearGradient id="lg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CC87A"/><stop offset="100%" stop-color="#83DFA0"/></linearGradient>
+    </defs>
+    <rect x="0" y="10" width="16" height="80" rx="3" fill="url(#lg1)"/>
+    <rect x="22" y="0" width="20" height="90" rx="3" fill="url(#lg2)"/>
+    <rect x="48" y="18" width="12" height="64" rx="3" fill="url(#lg3)"/>
+  </svg>
+  <div class="loader-msg" id="loaderMsg">Analyzing statement...</div>
+  <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+</div>
+
+<!-- ══ REVIEW ══════════════════════════════════════════════════════════════ -->
+<div id="reviewView">
+  <div class="toolbar">
+    <svg width="22" height="38" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2B7CC3"/><stop offset="100%" stop-color="#3BAED4"/></linearGradient><linearGradient id="tg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35A87A"/><stop offset="100%" stop-color="#5CC87A"/></linearGradient><linearGradient id="tg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CC87A"/><stop offset="100%" stop-color="#83DFA0"/></linearGradient></defs><rect x="0" y="10" width="16" height="80" rx="3" fill="url(#tg1)"/><rect x="22" y="0" width="20" height="90" rx="3" fill="url(#tg2)"/><rect x="48" y="18" width="12" height="64" rx="3" fill="url(#tg3)"/></svg>
+    <div class="tb-profits">
+      <div class="pb"><div class="pbl">Opt 1 Profit</div><div class="pbv" id="pb1"></div><div class="pbs">✓ Profitable</div></div>
+      <div class="pb"><div class="pbl">Opt 2 Profit</div><div class="pbv" id="pb2"></div><div class="pbs">✓ Profitable</div></div>
+    </div>
+    <div class="tb-btns">
+      <button class="tbtn tbtn-out" onclick="showForm()">← New</button>
+      <button class="tbtn tbtn-share" onclick="doShare()">📤 Share / Print</button>
+      <button class="tbtn tbtn-pdf" onclick="doPDF()">⬇ PDF</button>
+    </div>
+  </div>
+
+  <div class="page" id="page">
+    <!-- Header -->
+    <div class="page-hdr">
+      <div>
+        <div class="hdr-tag">Merchant Rate Review</div>
+        <div class="hdr-biz" id="hBiz"></div>
+        <div class="hdr-period" id="hPeriod"></div>
+      </div>
+      <div class="hdr-rep">
+        <div style="display:inline-flex;align-items:center;gap:7px">
+          <svg width="20" height="34" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2B7CC3"/><stop offset="100%" stop-color="#3BAED4"/></linearGradient><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35A87A"/><stop offset="100%" stop-color="#5CC87A"/></linearGradient><linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CC87A"/><stop offset="100%" stop-color="#83DFA0"/></linearGradient></defs><rect x="0" y="10" width="16" height="80" rx="3" fill="url(#hg1)"/><rect x="22" y="0" width="20" height="90" rx="3" fill="url(#hg2)"/><rect x="48" y="18" width="12" height="64" rx="3" fill="url(#hg3)"/></svg>
+          <div><div style="font-size:13px;font-weight:900;color:#fff;line-height:1">wholesale</div><div style="font-size:11px;color:#909090;line-height:1">payments</div></div>
+        </div>
+        <div class="hdr-rep-name" id="hRepName"></div>
+        <div class="hdr-rep-info" id="hRepPhone"></div>
+        <div class="hdr-rep-info" id="hRepEmail"></div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="body-grid">
+
+      <!-- Current Costs -->
+      <div class="sec">
+        <div class="sec-ttl">📊 Your Current Costs</div>
+        <div class="metrics" id="metricsGrid"></div>
+        <div style="font-size:10px;font-weight:700;color:#666;margin-bottom:5px;text-transform:uppercase">Interchange Breakdown (Est. 2025/2026)</div>
+        <table class="ict" id="icTable"></table>
+      </div>
+
+      <!-- Overpay + Opt1 -->
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <div class="overpay">
+          <div class="ov-tag">⚠️ You're Overpaying By</div>
+          <div class="ov-amt" id="ovAmt"></div>
+          <div class="ov-yr" id="ovYr"></div>
+          <div class="ov-sub">above actual interchange cost</div>
+        </div>
+        <div class="opt1-box">
+          <div class="opt1-ttl">✅ Option 1 — Interchange Plus</div>
+          <div class="opt1-formula" id="opt1Formula"></div>
+          <div class="opt1-nums" id="opt1Nums"></div>
+          <div class="opt1-save" id="opt1Save"></div>
+        </div>
+      </div>
+
+      <!-- Option 2 -->
+      <div class="opt2-box">
+        <div class="opt2-ttl">💳 Option 2 — Dual Pricing (Cash Discount)</div>
+        <div class="opt2-nums" id="opt2Nums"></div>
+        <div class="ticket-box">
+          <div class="tkt-l">
+            <div class="tl">4% on Avg Ticket</div>
+            <div class="ta" id="tktAmt"></div>
+            <div class="ts" id="tktAvg"></div>
+          </div>
+          <div class="tkt-r" id="tktMsg"></div>
+        </div>
+        <div class="present-box">
+          <div class="present-ttl">💬 How to present it to customers:</div>
+          <div class="present-q">"We offer a cash discount — pay with cash and save 4%. Card users pay the listed price. It's that simple."</div>
+          <div class="present-warn">⚠️ Always frame it as a savings for cash — never as a fee for using a card.</div>
+        </div>
+      </div>
+
+      <!-- Comparison -->
+      <div class="sec">
+        <div class="sec-ttl green">📋 Side-by-Side Comparison</div>
+        <table class="cmp-table" id="cmpTable"></table>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="page-cta">
+      <div>
+        <div class="cta-msg">Start saving <span style="color:#4EC9A0">immediately.</span></div>
+        <div class="cta-sub">No long-term contracts. No setup fees. Switch in days.</div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-name" id="ctaName"></div>
+        <div class="cta-ph" id="ctaPhone"></div>
+        <div class="cta-em" id="ctaEmail"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Constants ─────────────────────────────────────────────────────────────────
+const WP   = {pctAboveIC:0.0025, txn:0.05, monthly:11.95};
+const O1FEE = 25.90;
+const O2FEE = 45.00;
+const MKP  = {pct:0.0045, txn:0.15};
+const ICR  = {visa:0.0180, mc:0.0190, amex:0.0210, discover:0.0175};
+const ICTXN = 0.10;
+
+let mode = 'upload';
+let pdfFile = null;
+let RD = null; // review data
+
+const fmt = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2}).format(n||0);
+const fmtP = n => ((n||0)*100).toFixed(2)+'%';
+const clean = s => parseFloat((s+'').replace(/[$,%\s,]/g,'')) || 0;
+
+// ── Mode ──────────────────────────────────────────────────────────────────────
+function setMode(m) {
+  mode = m;
+  document.getElementById('uploadMode').style.display = m==='upload'?'block':'none';
+  document.getElementById('manualMode').style.display = m==='manual'?'block':'none';
+  document.getElementById('tabUpload').className = 'mode-tab'+(m==='upload'?' active':'');
+  document.getElementById('tabManual').className = 'mode-tab'+(m==='manual'?' active':'');
+}
+
+// ── Phone format ──────────────────────────────────────────────────────────────
+function fmtPhone(el) {
+  const d = el.value.replace(/\D/g,'').slice(0,10);
+  if (d.length < 4)      el.value = d;
+  else if (d.length < 7) el.value = `(${d.slice(0,3)}) ${d.slice(3)}`;
+  else                   el.value = `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+}
+
+// ── File upload ───────────────────────────────────────────────────────────────
+function handleFile(inp) {
+  pdfFile = inp.files[0];
+  if (!pdfFile) return;
+  const z = document.getElementById('uploadZone');
+  z.classList.add('has-file');
+  z.innerHTML = `<div class="uz-icon">✅</div><div class="uz-fname">${pdfFile.name}</div>`;
+}
+function toB64(f) {
+  return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(f);});
+}
+
+// ── Views ─────────────────────────────────────────────────────────────────────
+function showForm() {
+  document.getElementById('formView').style.display = 'block';
+  document.getElementById('loaderView').style.display = 'none';
+  document.getElementById('reviewView').style.display = 'none';
+  window.scrollTo(0,0);
+}
+function showLoader(msg) {
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('loaderView').style.display = 'flex';
+  document.getElementById('reviewView').style.display = 'none';
+  document.getElementById('loaderMsg').textContent = msg;
+  window.scrollTo(0,0);
+}
+function showReview() {
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('loaderView').style.display = 'none';
+  document.getElementById('reviewView').style.display = 'block';
+  window.scrollTo(0,0);
+}
+function showErr(msg) {
+  const b = document.getElementById('errBox');
+  b.innerHTML = '⚠️ '+msg;
+  b.style.display = 'block';
+}
+
+// ── Calc ──────────────────────────────────────────────────────────────────────
+function calc(ex, rep) {
+  const {businessName:biz, statementPeriod:per, monthlyVolume:vol, totalFees:fees} = ex;
+  const avgT = ex.avgTicket || 85;
+  const numT = ex.numTransactions || Math.round(vol / avgT);
+  const cm   = ex.cardMix || {};
+  const mix  = {visa:cm.visa||0.4, mc:cm.mc||0.3, amex:cm.amex||0.2, discover:cm.discover||0.1};
+
+  const ic = {
+    visa:     (vol*mix.visa    *ICR.visa)    + (numT*mix.visa    *ICTXN),
+    mc:       (vol*mix.mc      *ICR.mc)      + (numT*mix.mc      *ICTXN),
+    amex:     (vol*mix.amex    *ICR.amex)    + (numT*mix.amex    *ICTXN),
+    discover: (vol*mix.discover*ICR.discover)+ (numT*mix.discover*ICTXN)
+  };
+  ic.total = ic.visa+ic.mc+ic.amex+ic.discover;
+
+  const markup    = fees - ic.total;
+  const markupPct = markup / vol;
+  const effRate   = fees / vol;
+
+  let uPct = MKP.pct, uTxn = MKP.txn;
+  let o1mo = ic.total + (vol*uPct) + (numT*uTxn) + O1FEE;
+  if (o1mo >= fees) {
+    uPct = WP.pctAboveIC + 0.001;
+    uTxn = WP.txn + 0.02;
+    o1mo = ic.total + (vol*uPct) + (numT*uTxn) + O1FEE;
+  }
+  if (o1mo >= fees*0.90) o1mo = fees*0.90;
+  o1mo = Math.max(o1mo, O1FEE);
+
+  const o1save   = fees - o1mo;
+  const o1profit = (vol*(uPct-WP.pctAboveIC)) + (numT*(uTxn-WP.txn)) + (O1FEE-WP.monthly);
+  const o2mo     = O2FEE;
+  const o2save   = fees - o2mo;
+  const o2profit = O2FEE - WP.monthly;
+  const avgTicket   = vol / numT;
+  const cashDiscAmt = avgTicket * 0.04;
+
+  return {biz, per, vol, fees, numT, effRate, markup, markupPct, ic, mix,
+    avgTicket, cashDiscAmt,
+    opt1:{pct:uPct, txn:uTxn, mo:o1mo, save:o1save, annSave:o1save*12, profit:o1profit},
+    opt2:{mo:o2mo, save:o2save, annSave:o2save*12, profit:o2profit},
+    rep};
+}
+
+// ── Generate ──────────────────────────────────────────────────────────────────
+async function generate() {
+  document.getElementById('errBox').style.display = 'none';
+  const rep = {
+    name:  document.getElementById('repName').value.trim(),
+    phone: document.getElementById('repPhone').value.trim(),
+    email: document.getElementById('repEmail').value.trim()
+  };
+  if (!rep.name) { showErr('Please enter rep name.'); return; }
+
+  if (mode === 'manual') {
+    const vol  = clean(document.getElementById('mVol').value);
+    const fees = clean(document.getElementById('mFees').value);
+    if (!vol || !fees) { showErr('Please enter monthly volume and total fees.'); return; }
+    const txns   = clean(document.getElementById('mTxns').value);
+    const ticket = clean(document.getElementById('mTicket').value);
+    const v  = clean(document.getElementById('mVisa').value) || 40;
+    const m  = clean(document.getElementById('mMC').value)   || 30;
+    const a  = clean(document.getElementById('mAmex').value) || 20;
+    const dd = clean(document.getElementById('mDisc').value) || 10;
+    const tot = v+m+a+dd || 100;
+    const ex = {
+      businessName:   document.getElementById('mBiz').value.trim() || 'Valued Merchant',
+      statementPeriod:document.getElementById('mPeriod').value.trim() || 'Current Period',
+      monthlyVolume:  vol, totalFees: fees,
+      numTransactions:txns || (ticket ? Math.round(vol/ticket) : 0),
+      avgTicket: ticket,
+      cardMix:{visa:v/tot, mc:m/tot, amex:a/tot, discover:dd/tot}
+    };
+    RD = calc(ex, rep);
+    render(RD);
+    showReview();
+    return;
+  }
+
+  // PDF path
+  if (!pdfFile) { showErr('Please upload a merchant statement PDF, or switch to manual entry.'); return; }
+  showLoader('Reading your statement...');
+  try {
+    const b64 = await toB64(pdfFile);
+    document.getElementById('loaderMsg').textContent = 'AI analyzing fees & volume...';
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514', max_tokens:1000,
+        system:`You are a merchant services analyst. Extract data from this processing statement.
+Return ONLY a raw JSON object — no markdown, no backticks, no extra text.
+Structure: {"businessName":"string","statementPeriod":"string","monthlyVolume":number,"totalFees":number,"numTransactions":number,"cardMix":{"visa":0.4,"mc":0.3,"amex":0.2,"discover":0.1}}
+cardMix must sum to 1.0. Defaults: visa=0.4,mc=0.3,amex=0.2,discover=0.1. businessName default: 'Valued Merchant'. Estimate numTransactions from avg $85 ticket if missing.`,
+        messages:[{role:'user',content:[
+          {type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},
+          {type:'text',text:'Extract processing data. Return JSON only.'}
+        ]}]
+      })
+    });
+    const raw = await res.json();
+    const txt = (raw.content||[]).map(b=>b.text||'').join('').replace(/```json|```/g,'').trim();
+    const ex  = JSON.parse(txt);
+    document.getElementById('loaderMsg').textContent = 'Building your review...';
+    RD = calc(ex, rep);
+    render(RD);
+    showReview();
+  } catch(e) {
+    showForm();
+    showErr('Could not analyze PDF. Try manual entry instead. ('+e.message+')');
+  }
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render(d) {
+  document.getElementById('hBiz').textContent      = d.biz;
+  document.getElementById('hPeriod').textContent   = 'Statement: '+d.per;
+  document.getElementById('hRepName').textContent  = d.rep.name;
+  document.getElementById('hRepPhone').textContent = d.rep.phone;
+  document.getElementById('hRepEmail').textContent = d.rep.email;
+  document.getElementById('ctaName').textContent   = d.rep.name;
+  document.getElementById('ctaPhone').textContent  = d.rep.phone;
+  document.getElementById('ctaEmail').textContent  = d.rep.email;
+
+  document.getElementById('metricsGrid').innerHTML =
+    [['Monthly Volume',fmt(d.vol)],['Total Fees',fmt(d.fees)],
+     ['Effective Rate',fmtP(d.effRate)],['Processor Markup',fmtP(d.markupPct)]]
+    .map(([l,v])=>`<div class="metric"><div class="ml">${l}</div><div class="mv">${v}</div></div>`).join('');
+
+  document.getElementById('icTable').innerHTML =
+    [['Visa',d.ic.visa,d.mix.visa],['Mastercard',d.ic.mc,d.mix.mc],
+     ['Amex',d.ic.amex,d.mix.amex],['Discover',d.ic.discover,d.mix.discover]]
+    .map(([n,v,m])=>`<tr><td style="color:#444;font-weight:500">${n}</td><td style="text-align:center;color:#999;font-size:10px">${Math.round(m*100)}% mix</td><td style="text-align:right;font-weight:700;color:var(--blueDk)">${fmt(v)}</td></tr>`).join('')+
+    `<tr class="ict-tot"><td colspan="2">Total Interchange</td><td style="text-align:right">${fmt(d.ic.total)}</td></tr>`;
+
+  document.getElementById('ovAmt').innerHTML = fmt(d.markup)+'<span style="font-size:13px">/mo</span>';
+  document.getElementById('ovYr').textContent = fmt(d.markup*12)+' every year';
+
+  document.getElementById('opt1Formula').textContent =
+    `Interchange + ${(d.opt1.pct*100).toFixed(2)}% + $${d.opt1.txn.toFixed(2)}/txn + $${O1FEE.toFixed(2)}/mo`;
+  document.getElementById('opt1Nums').innerHTML =
+    [['New Monthly',fmt(d.opt1.mo)],['You Save/Mo',fmt(d.opt1.save)]]
+    .map(([l,v])=>`<div class="opt1-num"><div class="nl">${l}</div><div class="nv">${v}</div></div>`).join('');
+  document.getElementById('opt1Save').textContent = `💰 Save ${fmt(d.opt1.annSave)} this year`;
+
+  document.getElementById('opt2Nums').innerHTML =
+    [['Monthly Fee','$45','var(--blue)'],['Processing Fees','$0','var(--blue)'],['Annual Savings',fmt(d.opt2.annSave),'var(--teal)']]
+    .map(([l,v,c])=>`<div class="opt2-num"><div class="nl">${l}</div><div class="nv" style="color:${c}">${v}</div></div>`).join('');
+
+  document.getElementById('tktAmt').textContent = fmt(d.cashDiscAmt);
+  document.getElementById('tktAvg').textContent = 'avg ticket: '+fmt(d.avgTicket);
+  const tktMsg = d.cashDiscAmt<5?'less than a cup of coffee':d.cashDiscAmt<15?'about the cost of a fast food meal':d.cashDiscAmt<40?'roughly the cost of a nice dinner':'a small fraction of the total purchase';
+  document.getElementById('tktMsg').innerHTML = `That's the difference between paying cash vs. card — <strong>${tktMsg}</strong> on the average transaction.`;
+
+  document.getElementById('cmpTable').innerHTML =
+    `<thead><tr style="background:linear-gradient(90deg,#1B3554,#1A5FA0)">
+      <th style="padding:7px;text-align:left;color:#fff"></th>
+      <th style="padding:7px;text-align:center;color:#f87171">Current</th>
+      <th style="padding:7px;text-align:center;color:#4EC9A0">Option 1</th>
+      <th style="padding:7px;text-align:center;color:#93c5fd">Option 2</th>
+    </tr></thead><tbody>`+
+    [['Monthly Cost',fmt(d.fees),fmt(d.opt1.mo),fmt(d.opt2.mo)],
+     ['Annual Cost',fmt(d.fees*12),fmt(d.opt1.mo*12),fmt(d.opt2.mo*12)],
+     ['Monthly Savings','—',fmt(d.opt1.save),fmt(d.opt2.save)],
+     ['Annual Savings','—',fmt(d.opt1.annSave),fmt(d.opt2.annSave)]]
+    .map(([l,c,o1,o2],i)=>`<tr style="background:${i%2?'#f2f7fd':'#fff'}">
+      <td style="padding:7px;font-weight:600;color:#444">${l}</td>
+      <td style="padding:7px;text-align:center;color:#dc2626;font-weight:700">${c}</td>
+      <td style="padding:7px;text-align:center;color:#35A87A;font-weight:700">${o1}</td>
+      <td style="padding:7px;text-align:center;color:#2B7CC3;font-weight:700">${o2}</td>
+    </tr>`).join('')+'</tbody>';
+
+  document.getElementById('pb1').textContent = fmt(d.opt1.profit);
+  document.getElementById('pb2').textContent = fmt(d.opt2.profit);
+}
+
+// ── Print HTML ────────────────────────────────────────────────────────────────
+function buildHTML(d) {
+  const f = fmt, p = fmtP;
+  const tktMsg = d.cashDiscAmt<5?'less than a cup of coffee':d.cashDiscAmt<15?'about the cost of a fast food meal':d.cashDiscAmt<40?'roughly the cost of a nice dinner':'a small fraction of the total purchase';
+  const logo = `<svg width="26" height="44" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2B7CC3"/><stop offset="100%" stop-color="#3BAED4"/></linearGradient><linearGradient id="pg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35A87A"/><stop offset="100%" stop-color="#5CC87A"/></linearGradient><linearGradient id="pg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CC87A"/><stop offset="100%" stop-color="#83DFA0"/></linearGradient></defs><rect x="0" y="10" width="16" height="80" rx="3" fill="url(#pg1)"/><rect x="22" y="0" width="20" height="90" rx="3" fill="url(#pg2)"/><rect x="48" y="18" width="12" height="64" rx="3" fill="url(#pg3)"/></svg>`;
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Rate Review – ${d.biz}</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:12px;background:#fff;color:#222}table{border-collapse:collapse;width:100%}@page{size:letter landscape;margin:.35in}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
+</head><body>
+<div style="background:linear-gradient(120deg,#1B3554,#1E4A6E);padding:14px 20px;display:flex;justify-content:space-between;align-items:center">
+<div><div style="font-size:10px;color:#4EC9A0;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px">Merchant Rate Review</div>
+<div style="font-size:20px;font-weight:900;color:#fff">${d.biz}</div><div style="font-size:11px;color:#A8C8E8;margin-top:2px">Statement: ${d.per}</div></div>
+<div style="text-align:right"><div style="display:inline-flex;align-items:center;gap:7px;margin-bottom:4px">${logo}<div><div style="font-size:14px;font-weight:900;color:#fff;line-height:1">wholesale</div><div style="font-size:11px;color:#909090;line-height:1">payments</div></div></div><br/>
+<div style="font-size:13px;font-weight:800;color:#fff">${d.rep.name}</div>
+<div style="font-size:11px;color:#A8C8E8;margin-top:2px">${d.rep.phone}</div>
+<div style="font-size:11px;color:#A8C8E8">${d.rep.email}</div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;padding:12px 16px">
+<div style="background:#f7fafd;border-radius:9px;padding:11px 12px;border:1px solid #dce8f5">
+<div style="font-weight:800;font-size:11px;color:#1A5FA0;border-bottom:2px solid #2B7CC3;padding-bottom:4px;margin-bottom:8px;text-transform:uppercase">📊 Your Current Costs</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:9px">
+${[['Monthly Volume',f(d.vol)],['Total Fees',f(d.fees)],['Effective Rate',p(d.effRate)],['Processor Markup',p(d.markupPct)]].map(([l,v])=>`<div style="background:#fff;border-radius:6px;padding:6px 8px;border:1px solid #dce8f5"><div style="font-size:9px;color:#999;font-weight:600;text-transform:uppercase">${l}</div><div style="font-size:13px;font-weight:800;color:#1A5FA0">${v}</div></div>`).join('')}
+</div>
+<div style="font-size:10px;font-weight:700;color:#666;margin-bottom:4px;text-transform:uppercase">Interchange Breakdown (Est. 2025/2026)</div>
+<table><tbody>
+${[['Visa',d.ic.visa,d.mix.visa],['Mastercard',d.ic.mc,d.mix.mc],['Amex',d.ic.amex,d.mix.amex],['Discover',d.ic.discover,d.mix.discover]].map(([n,v,m])=>`<tr style="border-bottom:1px solid #eee"><td style="padding:3px 1px;color:#444;font-weight:500">${n}</td><td style="text-align:center;color:#999;font-size:10px">${Math.round(m*100)}% mix</td><td style="text-align:right;font-weight:700;color:#1A5FA0">${f(v)}</td></tr>`).join('')}
+<tr><td colspan="2" style="padding:4px 1px;font-weight:800;color:#1A5FA0">Total Interchange</td><td style="text-align:right;font-weight:800;color:#1A5FA0">${f(d.ic.total)}</td></tr>
+</tbody></table></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="background:#fff8e1;border:2px solid #f59e0b;border-radius:9px;padding:11px;text-align:center">
+<div style="font-size:10px;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:1px">⚠️ You're Overpaying By</div>
+<div style="font-size:28px;font-weight:900;color:#b45309;line-height:1.1;margin-top:2px">${f(d.markup)}<span style="font-size:12px">/mo</span></div>
+<div style="font-size:14px;font-weight:800;color:#92400e">${f(d.markup*12)} every year</div>
+<div style="font-size:10px;color:#a16207;margin-top:2px">above actual interchange cost</div></div>
+<div style="background:#E8F8F2;border:2px solid #35A87A;border-radius:9px;padding:11px;flex:1">
+<div style="font-weight:900;font-size:11px;color:#1a5c3a;margin-bottom:4px;text-transform:uppercase">✅ Option 1 — Interchange Plus</div>
+<div style="font-size:10px;color:#2d6a4f;margin-bottom:6px;background:#d4f5e3;padding:4px 7px;border-radius:5px">Interchange + ${(d.opt1.pct*100).toFixed(2)}% + $${d.opt1.txn.toFixed(2)}/txn + $${O1FEE.toFixed(2)}/mo</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+<div style="background:#fff;border-radius:6px;padding:6px;text-align:center"><div style="font-size:9px;color:#888;text-transform:uppercase">New Monthly</div><div style="font-size:14px;font-weight:800;color:#35A87A">${f(d.opt1.mo)}</div></div>
+<div style="background:#fff;border-radius:6px;padding:6px;text-align:center"><div style="font-size:9px;color:#888;text-transform:uppercase">You Save/Mo</div><div style="font-size:14px;font-weight:800;color:#35A87A">${f(d.opt1.save)}</div></div>
+</div>
+<div style="margin-top:7px;background:linear-gradient(135deg,#35A87A,#5CC87A);color:#fff;border-radius:6px;padding:6px;text-align:center;font-weight:900;font-size:12px">💰 Save ${f(d.opt1.annSave)} this year</div>
+</div></div>
+<div style="background:#EAF3FB;border:2px solid #2B7CC3;border-radius:9px;padding:11px 12px">
+<div style="font-weight:900;font-size:11px;color:#1A5FA0;text-transform:uppercase;margin-bottom:7px">💳 Option 2 — Dual Pricing (Cash Discount)</div>
+<div style="display:flex;gap:6px;margin-bottom:8px">
+${[['Monthly Fee','$45','#1A5FA0'],['Processing Fees','$0','#1A5FA0'],['Annual Savings',f(d.opt2.annSave),'#35A87A']].map(([l,v,c])=>`<div style="flex:1;background:#fff;border-radius:6px;padding:7px;text-align:center"><div style="font-size:9px;color:#888;text-transform:uppercase">${l}</div><div style="font-size:15px;font-weight:900;color:${c}">${v}</div></div>`).join('')}
+</div>
+<div style="background:#fff;border:2px solid #2B7CC3;border-radius:7px;padding:9px 10px;margin-bottom:7px;display:flex;align-items:center;gap:10px">
+<div style="text-align:center;min-width:68px;flex-shrink:0"><div style="font-size:9px;color:#888;text-transform:uppercase;font-weight:600">4% on Avg Ticket</div><div style="font-size:20px;font-weight:900;color:#2B7CC3;line-height:1.1">${f(d.cashDiscAmt)}</div><div style="font-size:9px;color:#777">avg ticket: ${f(d.avgTicket)}</div></div>
+<div style="font-size:11px;color:#1A5FA0;line-height:1.5;border-left:2px solid #dce8f5;padding-left:10px">That's the difference between paying cash vs. card — <strong>${tktMsg}</strong> on the average transaction.</div></div>
+<div style="font-size:11px;color:#1e40af;background:#dbeafe;padding:8px 10px;border-radius:6px;line-height:1.6">
+<strong>💬 How to present it:</strong> <em>"We offer a cash discount — pay with cash and save 4%. Card users pay the listed price."</em><br/>
+<span style="font-size:10px;color:#3b82f6;font-weight:600">⚠️ Always frame it as a savings for cash — never as a fee for using a card.</span></div></div>
+<div style="background:#f7fafd;border-radius:9px;padding:11px 12px;border:1px solid #dce8f5">
+<div style="font-weight:800;font-size:11px;color:#1A5FA0;border-bottom:2px solid #35A87A;padding-bottom:4px;margin-bottom:8px;text-transform:uppercase">📋 Side-by-Side Comparison</div>
+<table><thead><tr style="background:linear-gradient(90deg,#1B3554,#1A5FA0)">
+<th style="padding:6px 7px;text-align:left;color:#fff;font-size:11px"></th>
+<th style="padding:6px 7px;text-align:center;color:#f87171;font-size:11px">Current</th>
+<th style="padding:6px 7px;text-align:center;color:#4EC9A0;font-size:11px">Option 1</th>
+<th style="padding:6px 7px;text-align:center;color:#93c5fd;font-size:11px">Option 2</th>
+</tr></thead><tbody>
+${[['Monthly Cost',f(d.fees),f(d.opt1.mo),f(d.opt2.mo)],['Annual Cost',f(d.fees*12),f(d.opt1.mo*12),f(d.opt2.mo*12)],['Monthly Savings','—',f(d.opt1.save),f(d.opt2.save)],['Annual Savings','—',f(d.opt1.annSave),f(d.opt2.annSave)]].map(([l,c,o1,o2],i)=>`<tr style="background:${i%2?'#f2f7fd':'#fff'}"><td style="padding:6px 7px;font-weight:600;color:#444">${l}</td><td style="padding:6px 7px;text-align:center;color:#dc2626;font-weight:700">${c}</td><td style="padding:6px 7px;text-align:center;color:#35A87A;font-weight:700">${o1}</td><td style="padding:6px 7px;text-align:center;color:#2B7CC3;font-weight:700">${o2}</td></tr>`).join('')}
+</tbody></table></div></div>
+<div style="background:linear-gradient(120deg,#1B3554,#1E4A6E);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+<div><div style="font-size:18px;font-weight:900;color:#fff">Start saving <span style="color:#4EC9A0">immediately.</span></div>
+<div style="font-size:11px;color:#A8C8E8;margin-top:2px">No long-term contracts. No setup fees. Switch in days.</div></div>
+<div style="text-align:right;background:rgba(78,201,160,.1);border-radius:8px;padding:9px 14px;border:1px solid rgba(78,201,160,.35)">
+<div style="font-size:14px;font-weight:800;color:#fff">${d.rep.name}</div>
+<div style="font-size:12px;color:#4EC9A0;margin-top:2px">${d.rep.phone}</div>
+<div style="font-size:11px;color:#A8C8E8">${d.rep.email}</div></div></div>
+</body></html>`;
+}
+
+// ── PDF / Share ───────────────────────────────────────────────────────────────
+function doPDF() {
+  if (!RD) return;
+
+  // Inject a hidden print-only iframe into THIS page — bypasses popup blockers
+  const existing = document.getElementById('printFrame');
+  if (existing) existing.remove();
+
+  const iframe = document.createElement('iframe');
+  iframe.id = 'printFrame';
+  iframe.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:-1;opacity:0';
+  document.body.appendChild(iframe);
+
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(buildHTML(RD));
+  doc.close();
+
+  // Wait for content to render then print
+  iframe.onload = function() {
+    setTimeout(function() {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+      // Clean up after print dialog closes
+      setTimeout(function() { iframe.remove(); }, 2000);
+    }, 400);
+  };
+}
+
+async function doShare() {
+  if (!RD) return;
+  // Same approach — open print dialog which gives "Save as PDF" + Share options
+  doPDF();
+}
+</script>
+</body>
+</html>
