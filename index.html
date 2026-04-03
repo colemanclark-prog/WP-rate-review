@@ -19,20 +19,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .card-title{font-weight:700;font-size:13px;color:#1A5FA0;margin-bottom:12px}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:10px;font-weight:700;color:#666;margin-bottom:4px;text-transform:uppercase;letter-spacing:.6px}
-.field input,.field select{width:100%;padding:12px;border:1.5px solid #dce8f5;border-radius:9px;font-size:16px;outline:none;background:#fff;-webkit-appearance:none}
+.field input,.field select{width:100%;padding:12px;border:1.5px solid #dce8f5;border-radius:9px;font-size:16px;outline:none;background:#fff;-webkit-appearance:none;appearance:none}
 .field input:focus,.field select:focus{border-color:#2B7CC3}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-gen{width:100%;padding:17px;background:linear-gradient(135deg,#2B7CC3,#35A87A);color:#fff;border:none;border-radius:11px;font-size:17px;font-weight:900;cursor:pointer;margin-top:4px;letter-spacing:.3px}
+.btn-gen{width:100%;padding:17px;background:linear-gradient(135deg,#2B7CC3,#35A87A);color:#fff;border:none;border-radius:11px;font-size:17px;font-weight:900;cursor:pointer;margin-top:4px;-webkit-appearance:none}
 .err{background:#fff0f0;color:#c62828;padding:12px;border-radius:9px;margin-bottom:12px;font-size:13px;border:1px solid #fecaca;display:none}
 
 /* ── REVIEW ── */
 #reviewView{display:none}
-.toolbar{background:#1B3554;padding:9px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.pb{background:rgba(53,168,122,.15);border:1.5px solid #35A87A;border-radius:8px;padding:5px 10px;text-align:center;min-width:88px}
-.pb-l{font-size:8px;font-weight:700;color:#4EC9A0;text-transform:uppercase;letter-spacing:.5px}
-.pb-v{font-size:14px;font-weight:900;color:#4EC9A0;line-height:1.2}
-.pb-s{font-size:8px;color:#6ee7b7}
-.tbtn{padding:9px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;border:none;white-space:nowrap}
+.toolbar{background:#1B3554;padding:9px 14px;display:flex;gap:8px;align-items:center;justify-content:flex-end;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.tbtn{padding:9px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700;border:none;white-space:nowrap;-webkit-appearance:none}
 .tbtn-out{background:transparent;border:1.5px solid #4EC9A0;color:#4EC9A0}
 .tbtn-pdf{background:linear-gradient(135deg,#2B7CC3,#35A87A);color:#fff}
 
@@ -41,31 +37,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 
 /* Header */
 .page-hdr{background:linear-gradient(120deg,#1B3554 0%,#1E4A6E 100%);padding:14px 18px}
-.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.hdr-logo{display:inline-flex;align-items:center;gap:8px}
-.hdr-rep-name{font-size:13px;font-weight:800;color:#fff;text-align:right}
-.hdr-rep-info{font-size:10px;color:#A8C8E8;margin-top:2px;text-align:right}
+.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:10px}
+.hdr-logo{display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
 .hdr-bottom{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px}
 .hdr-tag{font-size:9px;color:#4EC9A0;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
-.hdr-biz{font-size:20px;font-weight:900;color:#fff;line-height:1.2}
+.hdr-biz{font-size:20px;font-weight:900;color:#fff;line-height:1.2;word-break:break-word}
 .hdr-period{font-size:10px;color:#A8C8E8;margin-top:2px}
-.ratings{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ratings{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .rating-item{display:flex;align-items:center;gap:5px}
 .rating-badge{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex-shrink:0}
-.rating-stars{font-size:9px;color:#f59e0b;line-height:1}
-.rating-label{font-size:8px;color:#A8C8E8;font-weight:600;line-height:1;margin-top:1px}
-.rating-div{width:1px;height:22px;background:rgba(255,255,255,.15)}
-.tp-badge{background:#00b67a;border-radius:3px;padding:2px 4px;font-size:8px;font-weight:900;color:#fff}
+.rating-div{width:1px;height:22px;background:rgba(255,255,255,.15);flex-shrink:0}
 
-/* Grid */
-.body-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#e8edf2}
-.body-grid > *{background:#fff;padding:12px 14px}
-.body-grid > *:nth-child(odd){border-right:1px solid #e8edf2}
-.body-grid > *:nth-child(1),.body-grid > *:nth-child(2){border-bottom:1px solid #e8edf2}
-@media(max-width:580px){.body-grid{grid-template-columns:1fr}.body-grid > *:nth-child(odd){border-right:none}.body-grid > *{border-bottom:1px solid #e8edf2!important}}
+/* Trust bar */
+.trust-bar{background:#162840;border-bottom:1px solid rgba(255,255,255,.07);padding:7px 18px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:9px;color:#A8C8E8;font-weight:600;white-space:nowrap}
+
+/* Body grid — equal height, equal columns */
+.body-grid{display:grid;grid-template-columns:1fr 1fr;background:#e0e8f0;gap:1px}
+.body-grid>div{background:#fff;padding:13px 14px;display:flex;flex-direction:column}
 
 /* Section titles */
-.sec-ttl{font-weight:800;font-size:10px;color:#1A5FA0;border-bottom:2px solid #2B7CC3;padding-bottom:4px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:5px}
+.sec-ttl{font-weight:800;font-size:10px;color:#1A5FA0;border-bottom:2px solid #2B7CC3;padding-bottom:4px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.5px}
 .sec-ttl.grn{border-color:#35A87A}
 .sec-ttl.amber{border-color:#f59e0b;color:#92400e}
 
@@ -75,56 +67,101 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .ml{font-size:8px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
 .mv{font-size:13px;font-weight:800;color:#1A5FA0;margin-top:1px}
 
-/* IC table */
+/* IC rows */
 .ic-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f0f4f8;font-size:11px}
-.ic-total{display:flex;justify-content:space-between;padding:5px 0;font-weight:800;color:#1A5FA0;font-size:11px}
+.ic-total-row{display:flex;justify-content:space-between;padding:5px 0;font-weight:800;color:#1A5FA0;font-size:11px;border-top:1px solid #dce8f5;margin-top:2px}
+
+/* IC explainer — fills remaining height of left col */
+.ic-explainer{margin-top:auto;padding-top:9px}
 
 /* Overpay */
-.overpay{background:#fff8e1;border:2px solid #f59e0b;border-radius:9px;padding:11px 12px;margin-bottom:9px;text-align:center}
+.overpay{background:#fff8e1;border:2px solid #f59e0b;border-radius:9px;padding:10px 12px;text-align:center;margin-bottom:9px}
 .ov-tag{font-size:9px;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:1px}
-.ov-amt{font-size:26px;font-weight:900;color:#b45309;line-height:1;margin-top:3px}
+.ov-amt{font-size:24px;font-weight:900;color:#b45309;line-height:1;margin-top:3px}
 .ov-yr{font-size:12px;font-weight:800;color:#92400e;margin-top:1px}
 
-/* Opt1 */
-.opt1{background:#E8F8F2;border:2px solid #35A87A;border-radius:9px;padding:11px 12px}
-.opt1-ttl{font-weight:900;font-size:10px;color:#1a5c3a;margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px}
-.opt1-formula{font-size:9px;color:#2d6a4f;background:#d4f5e3;padding:3px 7px;border-radius:4px;margin-bottom:7px}
-.onums{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+/* Option boxes */
+.opt-box{border-radius:9px;padding:11px 12px;position:relative;display:flex;flex-direction:column}
+.opt1-box{background:#E8F8F2;border:2px solid #35A87A}
+.opt2-box{background:#EAF3FB;border:2px solid #2B7CC3}
+.opt-ttl{font-weight:900;font-size:10px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.opt1-ttl-c{color:#1a5c3a}
+.opt2-ttl-c{color:#1A5FA0}
+.opt-formula{font-size:9px;padding:3px 7px;border-radius:4px;margin-bottom:7px}
+.opt1-formula-c{color:#2d6a4f;background:#d4f5e3}
+.opt2-formula-c{color:#1A5FA0;background:#d0e8fa}
+.onums{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:7px}
 .onum{background:#fff;border-radius:6px;padding:6px;text-align:center}
-.onl{font-size:8px;color:#888;text-transform:uppercase}
-.onv{font-size:14px;font-weight:800;color:#35A87A}
-.opt1-save{margin-top:7px;background:linear-gradient(135deg,#35A87A,#5CC87A);color:#fff;border-radius:6px;padding:6px;text-align:center;font-weight:900;font-size:12px}
+.onl{font-size:8px;color:#888;text-transform:uppercase;letter-spacing:.3px}
+.onv1{font-size:14px;font-weight:800;color:#35A87A}
+.onv2{font-size:14px;font-weight:800;color:#2B7CC3}
+.opt-save{border-radius:6px;padding:7px;text-align:center;font-weight:900;font-size:12px;color:#fff;margin-bottom:8px}
+.opt1-save-c{background:linear-gradient(135deg,#35A87A,#5CC87A)}
+.opt2-save-c{background:linear-gradient(135deg,#2B7CC3,#35A87A)}
+.rec-badge{position:absolute;top:-10px;right:10px;background:#f59e0b;color:#fff;font-size:8px;font-weight:900;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;box-shadow:0 2px 6px rgba(245,158,11,.4)}
 
-/* Opt2 */
-.opt2{background:#EAF3FB;border:2px solid #2B7CC3;border-radius:9px;padding:11px 12px}
-.opt2-ttl{font-weight:900;font-size:10px;color:#1A5FA0;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px}
-.o2nums{display:flex;gap:5px;margin-bottom:8px}
-.o2num{flex:1;background:#fff;border-radius:6px;padding:7px;text-align:center}
-.ticket-box{background:#fff;border:1.5px solid #2B7CC3;border-radius:8px;padding:9px 10px;margin-bottom:7px;display:flex;align-items:center;gap:10px}
-.tkt-l{text-align:center;min-width:64px;flex-shrink:0}
+/* Reassure boxes */
+.reassure{border-radius:7px;padding:8px 10px;font-size:9px;line-height:1.65;margin-top:auto}
+.reassure-grn{background:#f0fdf4;border:1px solid #86efac;color:#14532d}
+.reassure-blue{background:#eff6ff;border:1px solid #93c5fd;color:#1e3a8a}
+
+/* Ticket box */
+.ticket-box{background:#fff;border:1.5px solid #2B7CC3;border-radius:8px;padding:8px 10px;margin-bottom:7px;display:flex;align-items:center;gap:10px}
+.tkt-l{text-align:center;min-width:62px;flex-shrink:0}
 .tkt-r{font-size:10px;color:#1A5FA0;line-height:1.55;border-left:1.5px solid #dce8f5;padding-left:10px}
-.present{font-size:10px;color:#1e40af;background:#dbeafe;padding:8px 10px;border-radius:7px;line-height:1.65}
+.present{font-size:9px;color:#1e40af;background:#dbeafe;padding:8px 10px;border-radius:7px;line-height:1.65}
+
+/* Opt2 top nums */
+.o2nums{display:flex;gap:5px;margin-bottom:7px}
+.o2num{flex:1;background:#fff;border-radius:6px;padding:7px;text-align:center}
 
 /* Comparison */
-.cmp-table{width:100%;border-collapse:collapse;font-size:11px}
-.cmp-table th{padding:6px 7px;font-size:10px;font-weight:700}
-.cmp-table td{padding:5px 7px}
+.cmp-table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:10px}
 
 /* Cost of not switching */
-.nosw-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
-.nosw-card{background:#fff8e1;border:1px solid #f59e0b;border-radius:8px;padding:8px}
-.nosw-nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:7px}
+.nosw-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.nosw-card{background:#fff8e1;border:1px solid #f59e0b;border-radius:8px;padding:8px;display:flex;flex-direction:column}
+.nosw-nums{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:6px}
 .nosw-num{background:#fff;border-radius:5px;padding:4px 2px;text-align:center}
-.nosw-num .nl{font-size:7px;color:#92400e;font-weight:700;text-transform:uppercase}
-.nosw-num .nv{font-size:10px;font-weight:900;color:#b45309}
-.nosw-copy{font-size:9px;color:#444;line-height:1.55;padding:6px 8px;background:#fff;border-radius:5px;border-left:3px solid #35A87A}
-.nosw-card:last-child .nosw-copy{border-left-color:#2B7CC3}
-.nosw-closer{grid-column:1/-1;background:linear-gradient(135deg,#1B3554,#1E4A6E);border-radius:8px;padding:10px 14px;text-align:center;margin-top:2px}
+.nosw-copy{font-size:9px;color:#444;line-height:1.55;padding:5px 7px;background:#fff;border-radius:5px;flex:1}
+.nosw-closer{grid-column:1/-1;background:linear-gradient(135deg,#1B3554,#1E4A6E);border-radius:8px;padding:9px 14px;text-align:center;margin-top:2px}
+
+/* Switching steps */
+.switch-bar{background:#f7fafd;border-top:1px solid #dce8f5;padding:13px 18px}
+.step-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.step-item{text-align:center}
+.step-num{background:#35A87A;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;margin:0 auto 5px}
+.step-title{font-size:9px;font-weight:800;color:#1A5FA0;line-height:1.3;margin-bottom:2px}
+.step-sub{font-size:8px;color:#888;line-height:1.3}
 
 /* CTA */
-.page-cta{background:linear-gradient(120deg,#1B3554,#1E4A6E);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.cta-card{text-align:right;background:rgba(78,201,160,.1);border-radius:8px;padding:8px 13px;border:1px solid rgba(78,201,160,.3)}
+.page-cta{background:linear-gradient(120deg,#1B3554,#1E4A6E);padding:12px 18px}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:9px}
+.cta-checks{display:flex;gap:10px;flex-wrap:wrap;margin-top:5px}
+.cta-check{font-size:9px;color:#4EC9A0;display:flex;align-items:center;gap:3px}
+.cta-card{background:rgba(78,201,160,.1);border-radius:8px;padding:8px 13px;border:1px solid rgba(78,201,160,.3);text-align:right;flex-shrink:0}
+.disclaimer{border-top:1px solid rgba(255,255,255,.1);padding-top:7px;font-size:8px;color:rgba(255,255,255,.3);line-height:1.6;text-align:center}
 
+/* ── MOBILE ── */
+@media(max-width:600px){
+  .body-grid{grid-template-columns:1fr}
+  .hdr-bottom{flex-direction:column;align-items:flex-start}
+  .ratings{gap:8px}
+  .trust-bar{gap:10px;padding:7px 12px}
+  .trust-item{font-size:8px}
+  .step-grid{grid-template-columns:repeat(3,1fr)}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+  .cta-card{text-align:left;width:100%}
+  .two{grid-template-columns:1fr 1fr}
+}
+@media(max-width:360px){
+  .two{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+  .nosw-grid{grid-template-columns:1fr}
+  .nosw-closer{grid-column:1}
+}
+
+/* ── PRINT ── */
 @media print{
   .toolbar{display:none!important}
   @page{size:letter portrait;margin:.2in}
@@ -132,14 +169,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   #formView{display:none!important}
   #reviewView{display:block!important}
   .page{max-width:100%!important}
-  .body-grid > *{padding:9px 11px}
-  .nosw-grid{grid-template-columns:1fr 1fr}
+  .body-grid{grid-template-columns:1fr 1fr!important}
+  .step-grid{grid-template-columns:repeat(6,1fr)!important}
+  .body-grid>div{padding:9px 11px}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ FORM ══════════════════════════════════════════════════════ -->
+<!-- ══════════════ FORM ══════════════ -->
 <div id="formView">
   <div class="logo-wrap">
     <div class="logo-inline">
@@ -160,9 +198,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 
   <div class="card">
     <div class="card-title">🏪 Merchant Info</div>
-    <div class="field"><label>Business Name</label><input type="text" id="mBiz" placeholder="Joe's Pizza"/></div>
+    <div class="field"><label>Business Name</label><input type="text" id="mBiz" placeholder="Joe's Pizza" autocomplete="organization"/></div>
     <div class="two">
-      <div class="field"><label>Statement Period</label><input type="text" id="mPeriod" placeholder="March 2025"/></div>
+      <div class="field"><label>Statement Period</label>
+        <select id="mPeriod">
+          <option value="">Select Period...</option>
+          <option>January 2025</option><option>February 2025</option><option>March 2025</option>
+          <option>April 2025</option><option>May 2025</option><option>June 2025</option>
+          <option>July 2025</option><option>August 2025</option><option>September 2025</option>
+          <option>October 2025</option><option>November 2025</option><option>December 2025</option>
+          <option>January 2026</option><option>February 2026</option><option>March 2026</option>
+          <option>April 2026</option><option>May 2026</option><option>June 2026</option>
+          <option>July 2026</option><option>August 2026</option><option>September 2026</option>
+          <option>October 2026</option><option>November 2026</option><option>December 2026</option>
+        </select>
+      </div>
       <div class="field"><label>Industry</label>
         <select id="mIndustry">
           <option value="1.65">Retail Store (1.65%)</option>
@@ -199,10 +249,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 
   <div class="card">
     <div class="card-title">👤 Sales Rep Info</div>
-    <div class="field"><label>Rep Name *</label><input type="text" id="repName" placeholder="Jane Smith"/></div>
+    <div class="field"><label>Rep Name *</label><input type="text" id="repName" placeholder="Jane Smith" autocomplete="name"/></div>
     <div class="two">
-      <div class="field"><label>Phone</label><input type="tel" id="repPhone" placeholder="(555) 123-4567" oninput="fmtPhone(this)"/></div>
-      <div class="field"><label>Email</label><input type="email" id="repEmail" placeholder="jane@wholesalepayments.com" autocapitalize="none"/></div>
+      <div class="field"><label>Phone</label><input type="tel" id="repPhone" placeholder="(555) 123-4567" oninput="fmtPhone(this)" autocomplete="tel"/></div>
+      <div class="field"><label>Email</label><input type="email" id="repEmail" placeholder="jane@wholesalepayments.com" autocapitalize="none" autocomplete="email"/></div>
     </div>
   </div>
 
@@ -210,20 +260,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   <button class="btn-gen" onclick="generate()">GENERATE RATE REVIEW →</button>
 </div>
 
-<!-- ══ REVIEW ════════════════════════════════════════════════════ -->
+<!-- ══════════════ REVIEW ══════════════ -->
 <div id="reviewView">
   <div class="toolbar">
-    <div style="display:flex;gap:6px">
-      <div class="pb"><div class="pb-l">Opt 1 Profit</div><div class="pb-v" id="pb1"></div><div class="pb-s">✓ Profitable</div></div>
-      <div class="pb"><div class="pb-l">Opt 2 Profit</div><div class="pb-v" id="pb2"></div><div class="pb-s">✓ Profitable</div></div>
-    </div>
-    <div style="display:flex;gap:6px">
-      <button class="tbtn tbtn-out" onclick="showForm()">← New</button>
-      <button class="tbtn tbtn-pdf" onclick="doPDF()">⬇ Save PDF</button>
-    </div>
+    <button class="tbtn tbtn-out" onclick="showForm()">← New</button>
+    <button class="tbtn tbtn-pdf" onclick="doPDF()">⬇ Save PDF</button>
   </div>
 
   <div class="page" id="page">
+
     <!-- HEADER -->
     <div class="page-hdr">
       <div class="hdr-top">
@@ -231,10 +276,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
           <svg width="20" height="34" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2B7CC3"/><stop offset="100%" stop-color="#3BAED4"/></linearGradient><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35A87A"/><stop offset="100%" stop-color="#5CC87A"/></linearGradient><linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CC87A"/><stop offset="100%" stop-color="#83DFA0"/></linearGradient></defs><rect x="0" y="10" width="16" height="80" rx="3" fill="url(#hg1)"/><rect x="22" y="0" width="20" height="90" rx="3" fill="url(#hg2)"/><rect x="48" y="18" width="12" height="64" rx="3" fill="url(#hg3)"/></svg>
           <div><div style="font-size:14px;font-weight:900;color:#fff;line-height:1">wholesale</div><div style="font-size:11px;color:#909090;line-height:1">payments</div></div>
         </div>
-        <div>
-          <div class="hdr-rep-name" id="hRepName"></div>
-          <div class="hdr-rep-info" id="hRepPhone"></div>
-          <div class="hdr-rep-info" id="hRepEmail"></div>
+        <div style="text-align:right">
+          <div style="font-size:13px;font-weight:800;color:#fff" id="hRepName"></div>
+          <div style="font-size:10px;color:#A8C8E8;margin-top:2px" id="hRepPhone"></div>
+          <div style="font-size:10px;color:#A8C8E8" id="hRepEmail"></div>
         </div>
       </div>
       <div class="hdr-bottom">
@@ -246,252 +291,394 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
         <div class="ratings">
           <div class="rating-item">
             <div class="rating-badge" style="background:#fff;color:#4285F4">G</div>
-            <div><div class="rating-stars">★★★★★</div><div class="rating-label">4.6 · Google</div></div>
+            <div><div style="font-size:9px;color:#f59e0b;line-height:1">★★★★★</div><div style="font-size:8px;color:#A8C8E8;font-weight:600">4.6 · Google</div></div>
           </div>
           <div class="rating-div"></div>
           <div class="rating-item">
             <div class="rating-badge" style="background:#003767;color:#fff">B</div>
-            <div><div class="rating-stars">★★★★</div><div class="rating-label">4.0 · BBB A+</div></div>
+            <div><div style="font-size:9px;color:#f59e0b;line-height:1">★★★★</div><div style="font-size:8px;color:#A8C8E8;font-weight:600">4.0 · BBB A+</div></div>
           </div>
           <div class="rating-div"></div>
           <div class="rating-item">
-            <div class="tp-badge">★TP</div>
-            <div><div class="rating-stars">★★★★★</div><div class="rating-label">4.5 · Trustpilot</div></div>
+            <div style="background:#00b67a;border-radius:3px;padding:2px 4px;font-size:8px;font-weight:900;color:#fff;flex-shrink:0">★TP</div>
+            <div style="margin-left:3px"><div style="font-size:9px;color:#f59e0b;line-height:1">★★★★★</div><div style="font-size:8px;color:#A8C8E8;font-weight:600">4.5 · Trustpilot</div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BODY: 2×2 grid -->
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+      <div class="trust-item">🔒 PCI DSS Compliant · Your data is always protected</div>
+      <div class="trust-item">🛡️ Transparent Pricing · No hidden fees, ever</div>
+      <div class="trust-item">📞 U.S.-Based Support · Real people, real help</div>
+      <div class="trust-item">⭐ Inc. 5000 Company · Proven &amp; trusted nationwide</div>
+    </div>
+
+    <!-- BODY GRID: 2×2 equal columns -->
     <div class="body-grid">
 
-      <!-- CELL 1: Current Costs -->
+      <!-- TOP LEFT: Current Costs -->
       <div>
         <div class="sec-ttl">📊 Your Current Costs</div>
         <div class="metrics" id="metricsGrid"></div>
         <div style="font-size:9px;font-weight:700;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px">Estimated Interchange (Industry Avg)</div>
         <div id="icRows"></div>
-        <div class="ic-total"><span>Est. Total Interchange</span><span id="icTotal"></span></div>
+        <div class="ic-total-row"><span>Est. Total Interchange</span><span id="icTotal"></span></div>
+        <div class="ic-explainer">
+          <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:9px 10px;font-size:9px;color:#14532d;line-height:1.7">
+            <strong>What is interchange?</strong> It's the wholesale cost set by Visa, Mastercard, Amex &amp; Discover — the same for every processor in the country. <strong>What varies is the markup your processor adds on top.</strong> That's exactly what we're fixing for you.
+          </div>
+        </div>
       </div>
 
-      <!-- CELL 2: Overpay + Option 1 -->
-      <div style="display:flex;flex-direction:column;gap:9px">
+      <!-- TOP RIGHT: Overpay + Option 1 -->
+      <div>
         <div class="overpay">
-          <div class="ov-tag">⚠️ You're Overpaying By</div>
+          <div class="ov-tag">⚠️ You're Currently Overpaying By</div>
           <div class="ov-amt" id="ovAmt"></div>
           <div class="ov-yr" id="ovYr"></div>
-          <div style="font-size:9px;color:#a16207;margin-top:2px">above actual interchange cost</div>
+          <div style="font-size:9px;color:#a16207;margin-top:4px;line-height:1.5">That's money leaving your business every single month — money you've already earned and deserve to keep.</div>
         </div>
-        <div class="opt1">
-          <div class="opt1-ttl">✅ Option 1 — Interchange Plus</div>
-          <div class="opt1-formula" id="opt1Formula"></div>
+        <div class="opt-box opt1-box" style="flex:1">
+          <div id="opt1RecBadge"></div>
+          <div class="opt-ttl opt1-ttl-c">✅ Option 1 — Interchange Plus</div>
+          <div class="opt-formula opt1-formula-c" id="opt1Formula"></div>
           <div class="onums" id="opt1Nums"></div>
-          <div class="opt1-save" id="opt1Save"></div>
+          <div class="opt-save opt1-save-c" id="opt1Save"></div>
+          <div class="reassure reassure-grn">
+            <strong>✔ Full transparency</strong> — you see every cost broken out. Interchange is passed through at cost, our markup is clearly listed. Nothing hidden, nothing bundled. Ever.
+          </div>
         </div>
       </div>
 
-      <!-- CELL 3: Side-by-Side + Cost of Not Switching -->
+      <!-- BOTTOM LEFT: Comparison + Cost of Not Switching -->
       <div>
         <div class="sec-ttl grn">📋 Side-by-Side Comparison</div>
         <table class="cmp-table" id="cmpTable"></table>
-        <div style="margin-top:9px">
-          <div class="sec-ttl amber" style="margin-bottom:7px">⏰ Cost of Not Switching</div>
-          <div class="nosw-grid" id="noSwitchGrid"></div>
-        </div>
+        <div class="sec-ttl amber">⏰ Cost of Not Switching</div>
+        <div class="nosw-grid" id="noSwitchGrid"></div>
       </div>
 
-      <!-- CELL 4: Option 2 -->
+      <!-- BOTTOM RIGHT: Option 2 -->
       <div>
-        <div class="opt2" style="margin-bottom:0">
-          <div class="opt2-ttl">💳 Option 2 — Dual Pricing (Cash Discount)</div>
+        <div class="opt-box opt2-box" style="flex:1">
+          <div id="opt2RecBadge"></div>
+          <div class="opt-ttl opt2-ttl-c">💳 Option 2 — Dual Pricing (Cash Discount)</div>
+          <div class="opt-formula opt2-formula-c">$45/mo flat · $0 processing fees · Card users pay a small 4% service fee</div>
           <div class="o2nums" id="opt2Nums"></div>
+          <div class="onums" id="opt2SaveNums" style="margin-bottom:7px"></div>
+          <div class="opt-save opt2-save-c" id="opt2Save"></div>
           <div class="ticket-box">
             <div class="tkt-l">
-              <div style="font-size:8px;color:#888;text-transform:uppercase;font-weight:600">4% on Avg Ticket</div>
-              <div style="font-size:20px;font-weight:900;color:#2B7CC3;line-height:1.1" id="tktAmt"></div>
-              <div style="font-size:8px;color:#777;margin-top:1px" id="tktAvg"></div>
+              <div style="font-size:8px;color:#888;text-transform:uppercase;font-weight:600;line-height:1.3">4% on Avg Ticket</div>
+              <div style="font-size:18px;font-weight:900;color:#2B7CC3;line-height:1.1;margin-top:2px" id="tktAmt"></div>
+              <div style="font-size:8px;color:#777;margin-top:2px" id="tktAvg"></div>
             </div>
             <div class="tkt-r" id="tktMsg"></div>
           </div>
           <div class="present">
-            <div style="font-weight:800;margin-bottom:3px;color:#1A5FA0;font-size:10px">💬 How to present it:</div>
-            <div style="font-style:italic;margin-bottom:4px;font-size:10px">"We offer a cash discount — pay with cash and save 4%. Card users pay the listed price. It's that simple."</div>
+            <div style="font-weight:800;margin-bottom:3px;color:#1A5FA0;font-size:10px">💬 How to present it to customers:</div>
+            <div style="font-style:italic;margin-bottom:5px">"We offer a cash discount — pay with cash and save 4%. Card users pay the listed price. It's that simple."</div>
             <div style="font-size:9px;color:#3b82f6;font-weight:600">⚠️ Always frame it as a savings for cash — never as a fee for using a card.</div>
+          </div>
+          <div class="reassure reassure-blue" style="margin-top:8px">
+            <strong>✔ You stay in control</strong> — pricing is posted clearly at your register. Customers always have the choice to pay cash or card. Fully compliant with all card brand rules.
           </div>
         </div>
       </div>
 
     </div><!-- /body-grid -->
 
-    <!-- CTA -->
-    <div class="page-cta">
-      <div>
-        <div style="font-size:17px;font-weight:900;color:#fff">Start saving <span style="color:#4EC9A0">immediately.</span></div>
-        <div style="font-size:10px;color:#A8C8E8;margin-top:2px">No long-term contracts. No setup fees. Switch in days.</div>
-      </div>
-      <div class="cta-card">
-        <div style="font-size:13px;font-weight:900;color:#fff" id="ctaName"></div>
-        <div style="font-size:11px;color:#4EC9A0;margin-top:2px" id="ctaPhone"></div>
-        <div style="font-size:10px;color:#A8C8E8" id="ctaEmail"></div>
+    <!-- SWITCHING STEPS -->
+    <div class="switch-bar">
+      <div style="font-size:11px;font-weight:900;color:#1A5FA0;text-align:center;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">✅ Switching is Simple — We Handle Everything</div>
+      <div style="font-size:9px;color:#888;text-align:center;margin-bottom:10px">Your business never skips a beat. Most merchants are fully set up within 48 hours.</div>
+      <div class="step-grid">
+        <div class="step-item"><div class="step-num">1</div><div class="step-title">Sign Agreement</div><div class="step-sub">5 minutes, right here</div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-title">Get Approved</div><div class="step-sub">Same-day decision</div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-title">Terminal Shipped Free</div><div class="step-sub">Next business day</div></div>
+        <div class="step-item"><div class="step-num">4</div><div class="step-title">Setup &amp; Training</div><div class="step-sub">Your rep handles it all</div></div>
+        <div class="step-item"><div class="step-num">5</div><div class="step-title">We Cancel Old Service</div><div class="step-sub">Rep walks you through it</div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-title">Start Saving</div><div class="step-sub">Savings on next statement</div></div>
       </div>
     </div>
-  </div>
-</div>
+
+    <!-- CTA FOOTER -->
+    <div class="page-cta">
+      <div class="cta-inner">
+        <div>
+          <div style="font-size:15px;font-weight:900;color:#fff">Ready to keep more of what you earn?</div>
+          <div class="cta-checks">
+            <div class="cta-check">✔ Transparent pricing</div>
+            <div class="cta-check">✔ PCI DSS compliant</div>
+            <div class="cta-check">✔ U.S.-based support</div>
+            <div class="cta-check">✔ Free terminal</div>
+            <div class="cta-check">✔ Fast approval</div>
+          </div>
+        </div>
+        <div class="cta-card">
+          <div style="font-size:13px;font-weight:900;color:#fff" id="ctaName"></div>
+          <div style="font-size:11px;color:#4EC9A0;margin-top:2px" id="ctaPhone"></div>
+          <div style="font-size:10px;color:#A8C8E8" id="ctaEmail"></div>
+        </div>
+      </div>
+      <div class="disclaimer">DISCLAIMER: This rate review is an estimate based on industry-average interchange rates and the processing figures provided. Actual interchange costs vary by card type, transaction method, and card brand. Final pricing will be confirmed upon full statement analysis. This document is for informational purposes only and does not constitute a binding offer or guarantee of savings.</div>
+    </div>
+
+  </div><!-- /page -->
+</div><!-- /reviewView -->
 
 <script>
-var WP={pctAboveIC:0.0025,txn:0.05,monthly:11.95};
-var O1FEE=25.90,O2FEE=45.00,MKP={pct:0.0045,txn:0.15},ICTXN=0.10;
+var WP    = {pctAboveIC:0.0025, txn:0.05, monthly:11.95};
+var O1FEE = 25.90;
+var O2FEE = 45.00;
+var MKP   = {pct:0.0045, txn:0.15};
+var ICTXN = 0.10;
 
-function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2}).format(n||0);}
-function fmtP(n){return ((n||0)*100).toFixed(2)+'%';}
-function clean(s){return parseFloat((s+'').replace(/[$,%\s,]/g,''))||0;}
+function fmt(n){
+  return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2}).format(n||0);
+}
+function fmtP(n){ return ((n||0)*100).toFixed(2)+'%'; }
+function clean(s){ return parseFloat((s+'').replace(/[$,%\s,]/g,''))||0; }
 
 function fmtPhone(el){
-  var d=el.value.replace(/\D/g,'').slice(0,10);
-  if(d.length<4)el.value=d;
-  else if(d.length<7)el.value='('+d.slice(0,3)+') '+d.slice(3);
-  else el.value='('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
+  var d = el.value.replace(/\D/g,'').slice(0,10);
+  if(d.length < 4)      el.value = d;
+  else if(d.length < 7) el.value = '('+d.slice(0,3)+') '+d.slice(3);
+  else                  el.value = '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
 }
 
-function showErr(msg){var b=document.getElementById('errBox');b.textContent='⚠️ '+msg;b.style.display='block';}
-function hideErr(){document.getElementById('errBox').style.display='none';}
-function showForm(){document.getElementById('formView').style.display='block';document.getElementById('reviewView').style.display='none';window.scrollTo(0,0);}
+function showErr(msg){
+  var b = document.getElementById('errBox');
+  b.textContent = '⚠️ '+msg;
+  b.style.display = 'block';
+}
+function hideErr(){ document.getElementById('errBox').style.display = 'none'; }
+
+function showForm(){
+  document.getElementById('formView').style.display  = 'block';
+  document.getElementById('reviewView').style.display = 'none';
+  window.scrollTo(0,0);
+}
 
 function generate(){
   hideErr();
-  var repName=document.getElementById('repName').value.trim();
-  if(!repName){showErr('Please enter your name in the Rep Name field.');return;}
-  var vol=clean(document.getElementById('mVol').value);
-  var fees=clean(document.getElementById('mFees').value);
-  if(!vol||!fees){showErr('Please enter Monthly Volume and Total Fees.');return;}
+  var repName = document.getElementById('repName').value.trim();
+  if(!repName){ showErr('Please enter your name in the Rep Name field.'); return; }
+  var vol  = clean(document.getElementById('mVol').value);
+  var fees = clean(document.getElementById('mFees').value);
+  if(!vol || !fees){ showErr('Please enter Monthly Volume and Total Fees.'); return; }
 
-  var icRate=parseFloat(document.getElementById('mIndustry').value)/100;
-  var ticket=clean(document.getElementById('mTicket').value)||85;
-  var txns=clean(document.getElementById('mTxns').value)||Math.round(vol/ticket);
-  var industryLabel=document.getElementById('mIndustry').options[document.getElementById('mIndustry').selectedIndex].text;
-  var rep={name:repName,phone:document.getElementById('repPhone').value.trim(),email:document.getElementById('repEmail').value.trim()};
-  var biz=document.getElementById('mBiz').value.trim()||'Valued Merchant';
-  var per=document.getElementById('mPeriod').value.trim()||'Current Period';
+  var icRate  = parseFloat(document.getElementById('mIndustry').value) / 100;
+  var ticket  = clean(document.getElementById('mTicket').value) || 85;
+  var txns    = clean(document.getElementById('mTxns').value)   || Math.round(vol / ticket);
+  var rep     = {
+    name:  document.getElementById('repName').value.trim(),
+    phone: document.getElementById('repPhone').value.trim(),
+    email: document.getElementById('repEmail').value.trim()
+  };
+  var biz = document.getElementById('mBiz').value.trim() || 'Valued Merchant';
+  var per = document.getElementById('mPeriod').value     || 'Current Period';
 
-  var icTotal=(vol*icRate)+(txns*ICTXN);
-  var effRate=fees/vol;
-  var markup=fees-icTotal;
-  if(markup<0)markup=fees*0.08;
-  var markupPct=markup/vol;
+  // Interchange estimate
+  var icTotal   = (vol * icRate) + (txns * ICTXN);
+  var effRate   = fees / vol;
+  var markup    = fees - icTotal;
+  if(markup < 0) markup = fees * 0.08;
+  var markupPct = markup / vol;
 
-  var uPct=MKP.pct,uTxn=MKP.txn;
-  var o1mo=icTotal+(vol*uPct)+(txns*uTxn)+O1FEE;
-  if(o1mo>=fees){uPct=WP.pctAboveIC+0.001;uTxn=WP.txn+0.02;o1mo=icTotal+(vol*uPct)+(txns*uTxn)+O1FEE;}
-  if(o1mo>=fees*0.90)o1mo=fees*0.90;
-  o1mo=Math.max(o1mo,O1FEE);
-  var o1save=fees-o1mo;
-  var o1profit=(vol*(uPct-WP.pctAboveIC))+(txns*(uTxn-WP.txn))+(O1FEE-WP.monthly);
-  var o2mo=O2FEE,o2save=fees-O2FEE,o2profit=O2FEE-WP.monthly;
-  var avgTicket=vol/txns,cashDiscAmt=avgTicket*0.04;
+  // Option 1 — Interchange Plus
+  var uPct = MKP.pct;
+  var uTxn = MKP.txn;
+  var o1mo = icTotal + (vol * uPct) + (txns * uTxn) + O1FEE;
+  if(o1mo >= fees){
+    uPct = WP.pctAboveIC + 0.001;
+    uTxn = WP.txn + 0.02;
+    o1mo = icTotal + (vol * uPct) + (txns * uTxn) + O1FEE;
+  }
+  if(o1mo >= fees * 0.90) o1mo = fees * 0.90;
+  o1mo = Math.max(o1mo, O1FEE);
+  var o1save    = fees - o1mo;
+  var o1annSave = o1save * 12;
+  var o1profit  = (vol * (uPct - WP.pctAboveIC)) + (txns * (uTxn - WP.txn)) + (O1FEE - WP.monthly);
 
-  var d={biz:biz,per:per,vol:vol,fees:fees,txns:txns,effRate:effRate,markup:markup,markupPct:markupPct,
-    icTotal:icTotal,icRate:icRate,avgTicket:avgTicket,cashDiscAmt:cashDiscAmt,
-    opt1:{pct:uPct,txn:uTxn,mo:o1mo,save:o1save,annSave:o1save*12,profit:o1profit},
-    opt2:{mo:o2mo,save:o2save,annSave:o2save*12,profit:o2profit},rep:rep};
+  // Option 2 — Cash Discount
+  var o2gross   = vol * 0.04;
+  var o2mo      = O2FEE;
+  var o2save    = fees - O2FEE;
+  var o2annSave = o2save * 12;
+  var o2profit  = o2gross - icTotal - WP.monthly;
+
+  var avgTicket   = vol / txns;
+  var cashDiscAmt = avgTicket * 0.04;
+
+  // Recommend whichever saves the merchant more
+  var rec = (o2save > o1save) ? 2 : 1;
+
+  var d = {
+    biz:biz, per:per, vol:vol, fees:fees, txns:txns,
+    effRate:effRate, markup:markup, markupPct:markupPct,
+    icTotal:icTotal, avgTicket:avgTicket, cashDiscAmt:cashDiscAmt, rec:rec,
+    opt1:{ pct:uPct, txn:uTxn, mo:o1mo, save:o1save, annSave:o1annSave, profit:o1profit },
+    opt2:{ mo:o2mo, save:o2save, annSave:o2annSave, profit:o2profit, gross:o2gross },
+    rep:rep
+  };
 
   render(d);
-  document.getElementById('formView').style.display='none';
-  document.getElementById('reviewView').style.display='block';
+  document.getElementById('formView').style.display  = 'none';
+  document.getElementById('reviewView').style.display = 'block';
   window.scrollTo(0,0);
 }
 
 function render(d){
-  document.getElementById('hBiz').textContent=d.biz;
-  document.getElementById('hPeriod').textContent='Statement: '+d.per;
-  document.getElementById('hRepName').textContent=d.rep.name;
-  document.getElementById('hRepPhone').textContent=d.rep.phone;
-  document.getElementById('hRepEmail').textContent=d.rep.email;
-  document.getElementById('ctaName').textContent=d.rep.name;
-  document.getElementById('ctaPhone').textContent=d.rep.phone;
-  document.getElementById('ctaEmail').textContent=d.rep.email;
-  document.getElementById('pb1').textContent=fmt(d.opt1.profit);
-  document.getElementById('pb2').textContent=fmt(d.opt2.profit);
+  // Header
+  document.getElementById('hBiz').textContent      = d.biz;
+  document.getElementById('hPeriod').textContent   = 'Statement: '+d.per;
+  document.getElementById('hRepName').textContent  = d.rep.name;
+  document.getElementById('hRepPhone').textContent = d.rep.phone;
+  document.getElementById('hRepEmail').textContent = d.rep.email;
+  document.getElementById('ctaName').textContent   = d.rep.name;
+  document.getElementById('ctaPhone').textContent  = d.rep.phone;
+  document.getElementById('ctaEmail').textContent  = d.rep.email;
 
-  document.getElementById('metricsGrid').innerHTML=
-    [['Monthly Volume',fmt(d.vol)],['Total Fees',fmt(d.fees)],['Effective Rate',fmtP(d.effRate)],['Processor Markup',fmtP(d.markupPct)]]
-    .map(function(x){return '<div class="metric"><div class="ml">'+x[0]+'</div><div class="mv">'+x[1]+'</div></div>';}).join('');
+  // Recommendation badges
+  var recHTML = '<div class="rec-badge">⭐ Recommended</div>';
+  document.getElementById('opt1RecBadge').innerHTML = (d.rec === 1) ? recHTML : '';
+  document.getElementById('opt2RecBadge').innerHTML = (d.rec === 2) ? recHTML : '';
 
-  document.getElementById('icRows').innerHTML=
-    [['Visa (40%)',d.icTotal*0.40],['Mastercard (30%)',d.icTotal*0.30],['Amex (20%)',d.icTotal*0.20],['Discover (10%)',d.icTotal*0.10]]
-    .map(function(x){return '<div class="ic-row"><span style="color:#555">'+x[0]+'</span><span style="font-weight:700;color:#1A5FA0">'+fmt(x[1])+'</span></div>';}).join('');
-  document.getElementById('icTotal').textContent=fmt(d.icTotal);
+  // Metrics
+  document.getElementById('metricsGrid').innerHTML =
+    [['Monthly Volume',fmt(d.vol)],['Total Fees',fmt(d.fees)],
+     ['Effective Rate',fmtP(d.effRate)],['Processor Markup',fmtP(d.markupPct)]]
+    .map(function(x){
+      return '<div class="metric"><div class="ml">'+x[0]+'</div><div class="mv">'+x[1]+'</div></div>';
+    }).join('');
 
-  document.getElementById('ovAmt').innerHTML=fmt(d.markup)+'<span style="font-size:12px">/mo</span>';
-  document.getElementById('ovYr').textContent=fmt(d.markup*12)+' every year';
+  // IC rows
+  document.getElementById('icRows').innerHTML =
+    [['Visa (40%)',d.icTotal*0.40],['Mastercard (30%)',d.icTotal*0.30],
+     ['Amex (20%)',d.icTotal*0.20],['Discover (10%)',d.icTotal*0.10]]
+    .map(function(x){
+      return '<div class="ic-row"><span style="color:#555">'+x[0]+'</span><span style="font-weight:700;color:#1A5FA0">'+fmt(x[1])+'</span></div>';
+    }).join('');
+  document.getElementById('icTotal').textContent = fmt(d.icTotal);
 
-  document.getElementById('opt1Formula').textContent='Interchange + '+(d.opt1.pct*100).toFixed(2)+'% + $'+d.opt1.txn.toFixed(2)+'/txn + $'+O1FEE.toFixed(2)+'/mo';
-  document.getElementById('opt1Nums').innerHTML=
+  // Overpay
+  document.getElementById('ovAmt').innerHTML = fmt(d.markup)+'<span style="font-size:12px">/mo</span>';
+  document.getElementById('ovYr').textContent = fmt(d.markup*12)+' every year';
+
+  // Option 1
+  document.getElementById('opt1Formula').textContent =
+    'Interchange + '+(d.opt1.pct*100).toFixed(2)+'% + $'+d.opt1.txn.toFixed(2)+'/txn + $'+O1FEE.toFixed(2)+'/mo';
+  document.getElementById('opt1Nums').innerHTML =
     [['New Monthly',fmt(d.opt1.mo)],['You Save/Mo',fmt(d.opt1.save)]]
-    .map(function(x){return '<div class="onum"><div class="onl">'+x[0]+'</div><div class="onv">'+x[1]+'</div></div>';}).join('');
-  document.getElementById('opt1Save').textContent='💰 Save '+fmt(d.opt1.annSave)+' this year';
+    .map(function(x){
+      return '<div class="onum"><div class="onl">'+x[0]+'</div><div class="onv1">'+x[1]+'</div></div>';
+    }).join('');
+  document.getElementById('opt1Save').textContent = '💰 Save '+fmt(d.opt1.annSave)+' this year';
 
-  document.getElementById('opt2Nums').innerHTML=
+  // Option 2
+  document.getElementById('opt2Nums').innerHTML =
     [['Monthly Fee','$45','#1A5FA0'],['Processing Fees','$0','#1A5FA0'],['Annual Savings',fmt(d.opt2.annSave),'#35A87A']]
-    .map(function(x){return '<div class="o2num"><div class="onl">'+x[0]+'</div><div class="onv" style="color:'+x[2]+'">'+x[1]+'</div></div>';}).join('');
+    .map(function(x){
+      return '<div class="o2num"><div class="onl">'+x[0]+'</div><div style="font-size:14px;font-weight:800;color:'+x[2]+'">'+x[1]+'</div></div>';
+    }).join('');
+  document.getElementById('opt2SaveNums').innerHTML =
+    [['New Monthly',fmt(d.opt2.mo)],['You Save/Mo',fmt(d.opt2.save)]]
+    .map(function(x){
+      return '<div class="onum"><div class="onl">'+x[0]+'</div><div class="onv2">'+x[1]+'</div></div>';
+    }).join('');
+  document.getElementById('opt2Save').textContent = '💰 Save '+fmt(d.opt2.annSave)+' this year';
 
-  document.getElementById('tktAmt').textContent=fmt(d.cashDiscAmt);
-  document.getElementById('tktAvg').textContent='avg ticket: '+fmt(d.avgTicket);
-  var tm=d.cashDiscAmt<5?'less than a cup of coffee':d.cashDiscAmt<15?'about a fast food meal':d.cashDiscAmt<40?'roughly a nice dinner':'a small fraction of the total purchase';
-  document.getElementById('tktMsg').innerHTML='The difference between cash and card — <strong>'+tm+'</strong> on the average transaction.';
+  // Ticket box
+  document.getElementById('tktAmt').textContent = fmt(d.cashDiscAmt);
+  document.getElementById('tktAvg').textContent = 'avg ticket: '+fmt(d.avgTicket);
+  var tm = d.cashDiscAmt < 5  ? 'less than a cup of coffee' :
+           d.cashDiscAmt < 15 ? 'about a fast food meal'    :
+           d.cashDiscAmt < 40 ? 'roughly a nice dinner'     :
+                                'a small fraction of the total purchase';
+  document.getElementById('tktMsg').innerHTML =
+    'The difference between cash and card — <strong>'+tm+'</strong> on the average transaction. Most customers choose card anyway and never complain.';
 
-  document.getElementById('cmpTable').innerHTML=
+  // Comparison table
+  document.getElementById('cmpTable').innerHTML =
     '<thead><tr style="background:linear-gradient(90deg,#1B3554,#1A5FA0)">'+
     '<th style="padding:6px 7px;text-align:left;color:#fff;font-size:10px;font-weight:700"></th>'+
     '<th style="padding:6px 7px;text-align:center;color:#f87171;font-size:10px">Current</th>'+
     '<th style="padding:6px 7px;text-align:center;color:#4EC9A0;font-size:10px">Option 1</th>'+
     '<th style="padding:6px 7px;text-align:center;color:#93c5fd;font-size:10px">Option 2</th>'+
     '</tr></thead><tbody>'+
-    [['Monthly',fmt(d.fees),fmt(d.opt1.mo),fmt(d.opt2.mo)],
-     ['Annual',fmt(d.fees*12),fmt(d.opt1.mo*12),fmt(d.opt2.mo*12)],
-     ['Mo. Savings','—',fmt(d.opt1.save),fmt(d.opt2.save)],
-     ['Yr. Savings','—',fmt(d.opt1.annSave),fmt(d.opt2.annSave)]]
-    .map(function(r,i){return '<tr style="background:'+(i%2?'#f7fafd':'#fff')+'">'+
-      '<td style="padding:5px 7px;font-weight:600;color:#444;font-size:10px">'+r[0]+'</td>'+
-      '<td style="padding:5px 7px;text-align:center;color:#dc2626;font-weight:700;font-size:10px">'+r[1]+'</td>'+
-      '<td style="padding:5px 7px;text-align:center;color:#35A87A;font-weight:700;font-size:10px">'+r[2]+'</td>'+
-      '<td style="padding:5px 7px;text-align:center;color:#2B7CC3;font-weight:700;font-size:10px">'+r[3]+'</td></tr>';}).join('')+
-    '</tbody>';
+    [['Monthly',  fmt(d.fees),     fmt(d.opt1.mo),     fmt(d.opt2.mo)],
+     ['Annual',   fmt(d.fees*12),  fmt(d.opt1.mo*12),  fmt(d.opt2.mo*12)],
+     ['Mo. Save', '—',             fmt(d.opt1.save),   fmt(d.opt2.save)],
+     ['Yr. Save', '—',             fmt(d.opt1.annSave),fmt(d.opt2.annSave)]]
+    .map(function(r,i){
+      return '<tr style="background:'+(i%2?'#f7fafd':'#fff')+'">'+
+        '<td style="padding:5px 7px;font-weight:600;color:#444;font-size:10px">'+r[0]+'</td>'+
+        '<td style="padding:5px 7px;text-align:center;color:#dc2626;font-weight:700;font-size:10px">'+r[1]+'</td>'+
+        '<td style="padding:5px 7px;text-align:center;color:#35A87A;font-weight:700;font-size:10px">'+r[2]+'</td>'+
+        '<td style="padding:5px 7px;text-align:center;color:#2B7CC3;font-weight:700;font-size:10px">'+r[3]+'</td></tr>';
+    }).join('')+'</tbody>';
 
-  document.getElementById('noSwitchGrid').innerHTML=
-    [['Option 1',d.opt1.save,d.opt1.annSave,'#35A87A',
-      'Every month you wait, <strong>'+fmt(d.opt1.save)+'</strong> stays in your processor\'s pocket. Interchange Plus is the same pricing Fortune 500 companies use.'],
-     ['Option 2',d.opt2.save,d.opt2.annSave,'#2B7CC3',
-      'Cash Discount eliminates fees entirely. <strong>'+fmt(d.opt2.annSave)+'</strong> stays in your business per year. Most customers don\'t even blink.']]
-    .map(function(x){return '<div class="nosw-card">'+
-      '<div style="font-size:9px;font-weight:800;color:'+x[3]+';text-transform:uppercase;text-align:center;margin-bottom:5px">'+x[0]+'</div>'+
-      '<div class="nosw-nums">'+
-      [['Daily',fmt(x[1]/30.4)],['Monthly',fmt(x[1])],['Yearly',fmt(x[2])]].map(function(r){
-        return '<div class="nosw-num"><div class="nl">'+r[0]+'</div><div class="nv">'+r[1]+'</div></div>';}).join('')+
-      '</div>'+
-      '<div class="nosw-copy">'+x[4]+'</div></div>';}).join('')+
+  // Cost of not switching
+  document.getElementById('noSwitchGrid').innerHTML =
+    [['Option 1', d.opt1.save, d.opt1.annSave, '#35A87A',
+      'Every month without switching, <strong>'+fmt(d.opt1.save)+'</strong> stays in your current processor\'s pocket. You\'ve already earned that money — it\'s time to keep it.'],
+     ['Option 2', d.opt2.save, d.opt2.annSave, '#2B7CC3',
+      'Cash Discount eliminates fees entirely. <strong>'+fmt(d.opt2.annSave)+'</strong> stays in your business every year — automatically, month after month.']]
+    .map(function(x){
+      return '<div class="nosw-card">'+
+        '<div style="font-size:9px;font-weight:800;color:'+x[3]+';text-transform:uppercase;text-align:center;margin-bottom:5px">'+x[0]+'</div>'+
+        '<div class="nosw-nums">'+
+        [['Daily',fmt(x[1]/30.4)],['Monthly',fmt(x[1])],['Yearly',fmt(x[2])]]
+        .map(function(r){
+          return '<div class="nosw-num">'+
+            '<div style="font-size:7px;color:#92400e;font-weight:700;text-transform:uppercase">'+r[0]+'</div>'+
+            '<div style="font-size:10px;font-weight:900;color:#b45309">'+r[1]+'</div></div>';
+        }).join('')+'</div>'+
+        '<div class="nosw-copy">'+x[4]+'</div></div>';
+    }).join('')+
     '<div class="nosw-closer">'+
     '<div style="font-size:11px;font-weight:900;color:#4EC9A0;margin-bottom:2px">⚡ Every day without switching costs you '+fmt(Math.max(d.opt1.save,d.opt2.save)/30.4)+'</div>'+
-    '<div style="font-size:9px;color:#A8C8E8;line-height:1.5">No contracts. No setup fees. No risk. Savings start on your very next statement.</div>'+
+    '<div style="font-size:9px;color:#A8C8E8;line-height:1.5">Transparent pricing. Free terminal. Same-day approval. Savings start on your very next statement.</div>'+
     '</div>';
 }
 
 function doPDF(){
-  var ex=document.getElementById('printFrame');
-  if(ex)ex.remove();
-  var f=document.createElement('iframe');
-  f.id='printFrame';
-  f.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:-1;opacity:0';
+  var ex = document.getElementById('printFrame');
+  if(ex) ex.remove();
+  var f   = document.createElement('iframe');
+  f.id    = 'printFrame';
+  f.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:-1;opacity:0';
   document.body.appendChild(f);
-  var doc=f.contentDocument||f.contentWindow.document;
+  var doc = f.contentDocument || f.contentWindow.document;
   doc.open();
-  doc.write('<!DOCTYPE html><html><head><meta charset="UTF-8"/>'+
-    '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+  doc.write(
+    '<!DOCTYPE html><html><head><meta charset="UTF-8"/>'+
+    '<style>'+
+    '*{box-sizing:border-box;margin:0;padding:0}'+
+    'body{font-family:Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
     '@page{size:letter portrait;margin:.2in}'+
     document.querySelector('style').innerHTML+
-    '.toolbar{display:none!important}#formView{display:none!important}#reviewView{display:block!important}.page{max-width:100%!important}'+
-    '</style></head><body>'+document.getElementById('page').outerHTML+'</body></html>');
+    '.toolbar{display:none!important}'+
+    '#formView{display:none!important}'+
+    '#reviewView{display:block!important}'+
+    '.page{max-width:100%!important}'+
+    '.body-grid{grid-template-columns:1fr 1fr!important}'+
+    '.step-grid{grid-template-columns:repeat(6,1fr)!important}'+
+    '</style></head><body>'+
+    document.getElementById('page').outerHTML+
+    '</body></html>'
+  );
   doc.close();
-  f.onload=function(){setTimeout(function(){f.contentWindow.focus();f.contentWindow.print();setTimeout(function(){f.remove();},3000);},500);};
+  f.onload = function(){
+    setTimeout(function(){
+      f.contentWindow.focus();
+      f.contentWindow.print();
+      setTimeout(function(){ f.remove(); }, 3000);
+    }, 500);
+  };
 }
 </script>
 </body>
