@@ -658,15 +658,50 @@ function doPDF(){
     '<!DOCTYPE html><html><head><meta charset="UTF-8"/>'+
     '<style>'+
     '*{box-sizing:border-box;margin:0;padding:0}'+
-    'body{font-family:Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
-    '@page{size:letter portrait;margin:.2in}'+
+    'body{font-family:Arial,sans-serif;font-size:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+    '@page{size:letter portrait;margin:.15in}'+
     document.querySelector('style').innerHTML+
     '.toolbar{display:none!important}'+
     '#formView{display:none!important}'+
     '#reviewView{display:block!important}'+
     '.page{max-width:100%!important}'+
     '.body-grid{grid-template-columns:1fr 1fr!important}'+
+    '.body-grid>div{padding:7px 9px!important}'+
     '.step-grid{grid-template-columns:repeat(6,1fr)!important}'+
+    '.metrics{gap:3px!important;margin-bottom:6px!important}'+
+    '.metric{padding:5px 6px!important}'+
+    '.mv{font-size:11px!important}'+
+    '.overpay{padding:7px 9px!important;margin-bottom:7px!important}'+
+    '.ov-amt{font-size:19px!important}'+
+    '.ov-yr{font-size:10px!important}'+
+    '.opt-box{padding:8px 9px!important}'+
+    '.opt-save{padding:5px!important;font-size:10px!important;margin-bottom:6px!important}'+
+    '.onums{gap:3px!important;margin-bottom:5px!important}'+
+    '.onum{padding:4px!important}'+
+    '.onv1,.onv2{font-size:12px!important}'+
+    '.o2nums{gap:3px!important;margin-bottom:5px!important}'+
+    '.o2num{padding:5px!important}'+
+    '.ticket-box{padding:6px 8px!important;margin-bottom:5px!important}'+
+    '.tkt-l{min-width:54px!important}'+
+    '.present{padding:6px 8px!important}'+
+    '.reassure{padding:6px 8px!important}'+
+    '.nosw-grid{gap:5px!important}'+
+    '.nosw-card{padding:6px!important}'+
+    '.nosw-num{padding:3px 2px!important}'+
+    '.nosw-copy{padding:4px 5px!important}'+
+    '.nosw-closer{padding:7px 10px!important}'+
+    '.switch-bar{padding:8px 14px!important}'+
+    '.step-grid{gap:4px!important}'+
+    '.step-num{width:18px!important;height:18px!important;font-size:9px!important;margin-bottom:3px!important}'+
+    '.step-title{font-size:8px!important}'+
+    '.step-sub{font-size:7px!important}'+
+    '.page-cta{padding:8px 14px!important}'+
+    '.cta-checks{gap:6px!important;margin-top:3px!important}'+
+    '.trust-bar{padding:5px 14px!important;gap:12px!important}'+
+    '.trust-item{font-size:8px!important}'+
+    '.page-hdr{padding:10px 14px!important}'+
+    '.hdr-biz{font-size:16px!important}'+
+    '.cmp-table td,.cmp-table th{padding:4px 5px!important}'+
     '</style></head><body>'+
     document.getElementById('page').outerHTML+
     '</body></html>'
