@@ -10,7 +10,6 @@ html,body{height:100%;-webkit-text-size-adjust:100%}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1a1a1a}
 .hidden{display:none!important}
 
-/* ── FORM ── */
 #formView{max-width:480px;margin:0 auto;padding:18px 14px 100px}
 .logo{text-align:center;padding:14px 0 20px}
 .brand{display:inline-flex;align-items:baseline;gap:5px;font-family:'Montserrat','Segoe UI',Arial,sans-serif}
@@ -28,14 +27,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .field-warn{font-size:12px;color:#92400e;font-weight:600;margin-top:5px;padding:6px 10px;background:#fef3c7;border-radius:8px;display:none}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .saved-tag{display:inline-flex;align-items:center;gap:5px;background:#ecfdf5;color:#065f46;font-size:12px;font-weight:700;padding:5px 10px;border-radius:20px;margin-bottom:12px}
+.contact-check{font-size:12px;color:#065f46;font-weight:600;margin-top:5px;padding:5px 10px;background:#ecfdf5;border-radius:8px}
 .bench{padding:12px 14px;border-radius:10px;font-size:14px;font-weight:700;margin-top:12px;line-height:1.4}
 .bench.good{background:#ecfdf5;color:#065f46}
 .bench.warn{background:#fef3c7;color:#92400e}
 .bench.bad{background:#fef2f2;color:#991b1b}
 .err{background:#fff0f0;color:#c62828;padding:14px;border-radius:12px;margin-bottom:12px;font-size:14px;border:1px solid #fecaca;line-height:1.5}
 .btn-gen{width:100%;padding:20px;background:linear-gradient(135deg,#2B7CC3,#35A87A);color:#fff;border:none;border-radius:14px;font-size:18px;font-weight:900;cursor:pointer;letter-spacing:.3px}
-
-/* ── HISTORY ── */
 #historyPanel{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;border:1px solid #dce8f5}
 .hist-title{font-size:12px;font-weight:700;color:#1B3554;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px;display:flex;justify-content:space-between;align-items:center}
 .hist-clear{font-size:12px;color:#dc2626;font-weight:600;cursor:pointer;text-transform:none;letter-spacing:0}
@@ -44,19 +42,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .hist-biz{font-size:14px;font-weight:700;color:#1a1a1a}
 .hist-meta{font-size:12px;color:#888;margin-top:2px}
 .hist-save{font-size:13px;font-weight:900;color:#35A87A}
-.hist-empty{font-size:13px;color:#aaa;text-align:center;padding:8px 0}
 
-/* ── REVIEW ── */
 #reviewView{display:flex;flex-direction:column;height:100vh;max-height:100vh}
 .rev-bar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 12px;background:#fff;border-bottom:1px solid #dce8f5;flex-shrink:0}
-.rbtn{padding:13px 8px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-align:center;line-height:1.2}
+.rbtn{padding:13px 8px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-align:center}
 .rb-nav{background:#f7fafd;border:1.5px solid #1B3554;color:#1B3554}
 .rb-pitch{background:#fff8e6;border:1.5px solid #f59e0b;color:#b45309}
 .rb-print{background:#f7fafd;border:1.5px solid #555;color:#333}
-.rb-share{background:linear-gradient(135deg,#2B7CC3,#35A87A);color:#fff;grid-column:1/-1;font-size:15px;padding:15px}
+.send-bar{display:flex;gap:8px;padding:10px 12px;background:#fff;border-bottom:1px solid #dce8f5;flex-shrink:0;flex-wrap:wrap}
+.send-opt{flex:1;padding:14px 10px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:none;text-align:center;min-width:140px;transition:opacity .15s}
+.send-sms{background:#ecfdf5;border:1.5px solid #35A87A;color:#065f46}
+.send-email{background:#eff6ff;border:1.5px solid #2B7CC3;color:#1e40af}
+.send-copy{background:#f7fafd;border:1.5px solid #dce8f5;color:#555}
+.send-opt.sent{opacity:.6}
 .review-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.print-hint{background:#fef3c7;color:#92400e;font-size:13px;font-weight:600;padding:12px 16px;text-align:center;border-bottom:1px solid #fde68a;display:none}
 
-/* page */
 .page{background:#fff;max-width:820px;margin:0 auto}
 .pg-hdr{background:linear-gradient(120deg,#1B3554,#1E4A6E);padding:16px}
 .hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
@@ -119,10 +120,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .footer-checks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .conf{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;margin-top:10px}
 
-/* mobile print hint */
-.print-hint{background:#fef3c7;color:#92400e;font-size:13px;font-weight:600;padding:12px 16px;text-align:center;border-bottom:1px solid #fde68a;display:none}
-
-/* ── QUICK PITCH ── */
 #pitchView{min-height:100vh;background:linear-gradient(160deg,#1B3554 0%,#1E4A6E 50%,#0f2a42 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 16px 16px}
 .pitch-brand{display:flex;align-items:baseline;gap:5px;font-family:'Montserrat','Segoe UI',Arial,sans-serif;margin-bottom:6px}
 .pb1{font-size:18px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase}
@@ -140,8 +137,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .pp-sub.red{color:#fca5a5}
 .pp-sub.grn{color:#A8C8E8}
 .pitch-arrow{font-size:28px;color:#4EC9A0;text-align:center;width:100%;max-width:420px;margin:2px 0}
-.pitch-anchor{font-size:17px;color:#fff;font-weight:800;background:rgba(78,201,160,.12);border:1px solid rgba(78,201,160,.25);border-radius:14px;padding:16px 18px;width:100%;max-width:420px;text-align:center;margin:4px 0 16px;line-height:1.5}
-.pitch-disc{font-size:11px;color:rgba(255,255,255,.35);text-align:center;width:100%;max-width:420px;line-height:1.5;margin-bottom:16px;padding:0 4px}
+.pitch-anchor{font-size:17px;color:#fff;font-weight:800;background:rgba(78,201,160,.12);border:1px solid rgba(78,201,160,.25);border-radius:14px;padding:16px 18px;width:100%;max-width:420px;text-align:center;margin:4px 0 14px;line-height:1.5}
+.pitch-disc{font-size:11px;color:rgba(255,255,255,.35);text-align:center;width:100%;max-width:420px;line-height:1.5;margin-bottom:14px;padding:0 4px}
 .pitch-rep{text-align:center;margin-bottom:14px}
 .pr-name{font-size:15px;font-weight:900;color:#fff}
 .pr-info{font-size:13px;color:#A8C8E8;margin-top:3px}
@@ -154,8 +151,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .toast.show{opacity:1}
 
 @media(min-width:640px){
-  .rev-bar{grid-template-columns:repeat(4,1fr)}
-  .rb-share{grid-column:auto;font-size:14px;padding:13px 8px}
+  .rev-bar{grid-template-columns:repeat(3,1fr)}
+  .send-bar{flex-wrap:nowrap}
+  .send-opt{min-width:0}
   .costs-row{grid-template-columns:repeat(4,1fr)}
   .opts-wrap{display:grid;grid-template-columns:1fr 1fr}
   .opt-cell{border-bottom:none}
@@ -171,9 +169,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   .review-scroll{overflow:visible}
   .print-hint{display:none!important}
 }
-
 @media print{
-  .rev-bar,.toast,.print-hint{display:none!important}
+  .rev-bar,.send-bar,.toast,.print-hint{display:none!important}
   @page{size:letter portrait;margin:.2in}
   body{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff;font-size:11px}
   #formView,#pitchView{display:none!important}
@@ -184,9 +181,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   .opt-cell:first-child{border-right:1px solid #e8edf2!important;border-bottom:none!important}
   .costs-row{grid-template-columns:repeat(4,1fr)!important}
   .opt-cell.dimmed{opacity:.5!important}
-  .pg-hdr{padding:10px 14px!important}
+  .pg-hdr,.costs-section,.opt-cell,.txn-row,.urgency-strip,.pg-footer{padding:10px 14px!important}
   .hdr-biz{font-size:18px!important}
-  .costs-section,.opt-cell,.txn-row,.urgency-strip,.pg-footer{padding:10px 14px!important}
   .metric{padding:10px 8px!important}
   .mv{font-size:16px!important}
   .num-val1,.num-val2{font-size:20px!important}
@@ -205,14 +201,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 <body>
 <div class="toast" id="toast"></div>
 
-<!-- ══ FORM ══ -->
+<!-- FORM -->
 <div id="formView">
   <div class="logo">
     <div class="brand"><span class="b1">TEAM</span><span class="b2">STEEL</span></div>
     <div class="sub">Merchant Rate Review</div>
   </div>
 
-  <!-- Pitch History -->
   <div id="historyPanel" class="hidden">
     <div class="hist-title">Recent Pitches <span class="hist-clear" onclick="clearHistory()">Clear all</span></div>
     <div id="historyList"></div>
@@ -277,8 +272,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <div class="card-title">Your Info</div>
     <div id="savedTag" class="saved-tag hidden">✓ Info saved</div>
     <div class="field"><label>Your Name *</label><input type="text" id="repName" placeholder="Jane Smith" autocomplete="name" oninput="autoEmail(this)"/></div>
-    <div class="field"><label>Phone</label><input type="tel" id="repPhone" placeholder="(555) 123-4567" oninput="fmtPhone(this)" autocomplete="tel"/></div>
-    <div class="field"><label>Email Prefix</label>
+    <div class="field"><label>Phone</label><input type="tel" id="repPhone" placeholder="(555) 123-4567" oninput="fmtRepPhone(this)" autocomplete="tel"/></div>
+    <div class="field">
+      <label>Email Prefix</label>
       <input type="text" id="repPrefix" placeholder="jane.smith" autocapitalize="none" autocorrect="off" spellcheck="false" oninput="syncEmail()"/>
       <div style="font-size:12px;color:#2B7CC3;font-weight:600;margin-top:5px;padding-left:2px" id="emailPreview"></div>
       <input type="hidden" id="repEmail"/>
@@ -289,15 +285,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   <button class="btn-gen" onclick="generate()">GENERATE RATE REVIEW</button>
 </div>
 
-<!-- ══ REVIEW ══ -->
+<!-- REVIEW -->
 <div id="reviewView" class="hidden">
-  <div class="print-hint" id="printHint">To print or save as PDF, open this page on a desktop browser.</div>
+  <div class="print-hint" id="printHint">To print or save as PDF, open on a desktop browser.</div>
   <div class="rev-bar">
     <button class="rbtn rb-nav" onclick="showForm()">← New</button>
     <button class="rbtn rb-pitch" onclick="showPitch()">⚡ Pitch</button>
-    <button class="rbtn rb-print" onclick="window.print()" id="printBtn">Save / Print</button>
+    <button class="rbtn rb-print" id="printBtn" onclick="window.print()">Save / Print</button>
   </div>
-  <div id="sendBar" class="send-options" style="padding:10px 12px;background:#fff;border-bottom:1px solid #dce8f5;flex-shrink:0"></div>
+  <div class="send-bar" id="sendBar"></div>
   <div class="review-scroll">
     <div class="page" id="page">
       <div class="pg-hdr">
@@ -362,7 +358,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   </div>
 </div>
 
-<!-- ══ QUICK PITCH ══ -->
+<!-- PITCH -->
 <div id="pitchView" class="hidden">
   <div class="pitch-brand"><span class="pb1">TEAM</span><span class="pb2">STEEL</span></div>
   <div class="pitch-biz" id="pitchBiz"></div>
@@ -391,264 +387,382 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 </div>
 
 <script>
-var O1FEE=25.90,O2FEE=45.00,ICTXN=0.10,MKP_PCT=0.0045,MKP_TXN=0.15,WP_PCT=0.0025,WP_TXN=0.05;
-var BENCH={'Retail Store':1.95,'Restaurant / Bar':2.15,'Auto / Repair':2.10,'Healthcare / Medical':2.20,'Hotel / Lodging':2.30,'E-commerce / Online':2.40,'Professional Services':2.15,'Grocery / Supermarket':1.55,'Gas Station':1.45,'Beauty / Salon / Spa':2.10,'Contractor / Home Services':2.05,'Legal / Accounting':2.20,'Wholesale / Distribution':1.95,'Travel / Entertainment':2.50,'Other':2.15};
-var ANCHORS=[[10000,'That\'s a new hire — every month.'],[5000,'That\'s a salary boost — every month.'],[3000,'That\'s a family vacation — every month.'],[2000,'That\'s a part-time employee — every month.'],[1500,'That\'s a car payment — every month.'],[1000,'That\'s a weekend getaway — every month.'],[0,'That\'s real money — every month.']];
-var G={};
+var WEBHOOK = 'https://hook.us2.make.com/m1gj7qkfunwjq68uufm8ro1de464tfqy';
+var O1FEE = 25.90, O2FEE = 45.00, ICTXN = 0.10;
+var MKP_PCT = 0.0045, MKP_TXN = 0.15, WP_PCT = 0.0025, WP_TXN = 0.05;
+var BENCH = {
+  'Retail Store':1.95,'Restaurant / Bar':2.15,'Auto / Repair':2.10,
+  'Healthcare / Medical':2.20,'Hotel / Lodging':2.30,'E-commerce / Online':2.40,
+  'Professional Services':2.15,'Grocery / Supermarket':1.55,'Gas Station':1.45,
+  'Beauty / Salon / Spa':2.10,'Contractor / Home Services':2.05,'Legal / Accounting':2.20,
+  'Wholesale / Distribution':1.95,'Travel / Entertainment':2.50,'Other':2.15
+};
+var ANCHORS = [
+  [10000,'That\'s a new hire — every month.'],
+  [5000,'That\'s a salary boost — every month.'],
+  [3000,'That\'s a family vacation — every month.'],
+  [2000,'That\'s a part-time employee — every month.'],
+  [1500,'That\'s a car payment — every month.'],
+  [1000,'That\'s a weekend getaway — every month.'],
+  [0,'That\'s real money — every month.']
+];
+var G = {};
 
-function fmt(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2}).format(n||0);}
-function fmtP(n){return ((n||0)*100).toFixed(2)+'%';}
-function clean(s){return parseFloat((s+'').replace(/[$,%\s,]/g,''))||0;}
-function isMobile(){return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);}
-function el(id){return document.getElementById(id);}
-function show(id){el(id).classList.remove('hidden');}
-function hide(id){el(id).classList.add('hidden');}
-function showToast(msg){
-  var t=el('toast');t.textContent=msg;t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},2800);
+function fmt(n) { return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2}).format(n||0); }
+function fmtP(n) { return ((n||0)*100).toFixed(2)+'%'; }
+function clean(s) { return parseFloat((s+'').replace(/[$,%\s,]/g,''))||0; }
+function isMobile() { return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent); }
+function el(id) { return document.getElementById(id); }
+function show(id) { el(id).classList.remove('hidden'); }
+function hide(id) { el(id).classList.add('hidden'); }
+function showToast(msg) {
+  var t = el('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2800);
 }
 
-function fmtPhone(inp){
-  var d=inp.value.replace(/\D/g,'').slice(0,10);
-  if(d.length<4){inp.value=d;}
-  else if(d.length<7){inp.value='('+d.slice(0,3)+') '+d.slice(3);}
-  else{inp.value='('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);}
+function fmtPhone(inp) {
+  var d = inp.value.replace(/\D/g,'').slice(0,10);
+  if(d.length < 4) { inp.value = d; }
+  else if(d.length < 7) { inp.value = '('+d.slice(0,3)+') '+d.slice(3); }
+  else { inp.value = '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6); }
+  var chk = el('mPhoneCheck');
+  if(d.length === 10) { chk.classList.remove('hidden'); }
+  else { chk.classList.add('hidden'); }
 }
-function syncEmail(){
-  var p=el('repPrefix').value.trim().toLowerCase().replace(/\s+/g,'.');
-  var full=p?p+'@wholesalepayments.com':'';
-  el('repEmail').value=full;
-  el('emailPreview').textContent=full||'';
+
+function fmtRepPhone(inp) {
+  var d = inp.value.replace(/\D/g,'').slice(0,10);
+  if(d.length < 4) { inp.value = d; }
+  else if(d.length < 7) { inp.value = '('+d.slice(0,3)+') '+d.slice(3); }
+  else { inp.value = '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6); }
 }
-function autoEmail(inp){
-  var parts=inp.value.trim().toLowerCase().split(/\s+/);
-  if(parts.length>=2){
-    var p=parts[0]+'.'+parts[parts.length-1];
-    el('repPrefix').value=p;
+
+function validateMEmail() {
+  var v = el('mEmail').value.trim();
+  var chk = el('mEmailCheck');
+  if(v.indexOf('@') > 0 && v.indexOf('.') > v.indexOf('@')) {
+    chk.classList.remove('hidden');
+  } else {
+    chk.classList.add('hidden');
+  }
+}
+
+function syncEmail() {
+  var p = el('repPrefix').value.trim().toLowerCase().replace(/\s+/g,'.');
+  var full = p ? p+'@wholesalepayments.com' : '';
+  el('repEmail').value = full;
+  el('emailPreview').textContent = full || '';
+}
+
+function autoEmail(inp) {
+  var parts = inp.value.trim().toLowerCase().split(/\s+/);
+  if(parts.length >= 2) {
+    var p = parts[0]+'.'+parts[parts.length-1];
+    el('repPrefix').value = p;
     syncEmail();
   }
 }
 
-/* ── SANITY CHECK ── */
-function sanityCheck(){
-  var vol=clean(el('mVol').value),fees=clean(el('mFees').value);
-  var volW=el('volWarn'),feeW=el('feeWarn');
-  var vInp=el('mVol'),fInp=el('mFees');
-  volW.style.display='none';feeW.style.display='none';
-  vInp.classList.remove('warn-field');fInp.classList.remove('warn-field');
-  if(!vol||!fees){return true;}
-  var eff=fees/vol*100;
-  var ok=true;
-  if(eff>8){
-    feeW.textContent='Effective rate of '+eff.toFixed(2)+'% seems high — double-check your numbers.';
-    feeW.style.display='block';
-    fInp.classList.add('warn-field');
-    ok=false;
+function sanityCheck() {
+  var vol = clean(el('mVol').value), fees = clean(el('mFees').value);
+  var volW = el('volWarn'), feeW = el('feeWarn');
+  var vInp = el('mVol'), fInp = el('mFees');
+  volW.style.display = 'none'; feeW.style.display = 'none';
+  vInp.classList.remove('warn-field'); fInp.classList.remove('warn-field');
+  if(!vol || !fees) { return true; }
+  var eff = fees/vol*100;
+  if(fees > vol) {
+    feeW.textContent = 'Fees can\'t exceed volume — double-check your numbers.';
+    feeW.style.display = 'block'; fInp.classList.add('warn-field'); return false;
   }
-  if(vol>0&&fees>vol){
-    feeW.textContent='Fees can\'t exceed volume — double-check your numbers.';
-    feeW.style.display='block';
-    fInp.classList.add('warn-field');
-    ok=false;
+  if(eff > 8) {
+    feeW.textContent = 'Effective rate of '+eff.toFixed(2)+'% seems high — double-check your numbers.';
+    feeW.style.display = 'block'; fInp.classList.add('warn-field'); return false;
   }
-  if(fees<0||vol<0){
-    volW.textContent='Values must be positive.';
-    volW.style.display='block';
-    vInp.classList.add('warn-field');
-    ok=false;
-  }
-  return ok;
+  return true;
 }
 
-function liveBench(){
+function liveBench() {
   sanityCheck();
-  var vol=clean(el('mVol').value),fees=clean(el('mFees').value);
-  var box=el('benchBox');
-  if(!vol||!fees){box.innerHTML='';return;}
-  var eff=fees/vol*100;
-  var sel=el('mIndustry'),ind=sel.options[sel.selectedIndex].text,avg=BENCH[ind]||2.0;
-  var cls=eff<avg*0.9?'good':eff<=avg?'warn':'bad';
-  var msg=eff<avg*0.9?'Below '+ind+' avg ('+avg.toFixed(2)+'%) — still room to save':eff<=avg?'Near '+ind+' avg ('+avg.toFixed(2)+'%)':'Above '+ind+' avg ('+avg.toFixed(2)+'%) — big savings available';
-  box.innerHTML='<div class="bench '+cls+'">'+msg+'</div>';
+  var vol = clean(el('mVol').value), fees = clean(el('mFees').value);
+  var box = el('benchBox');
+  if(!vol || !fees) { box.innerHTML = ''; return; }
+  var eff = fees/vol*100;
+  var sel = el('mIndustry'), ind = sel.options[sel.selectedIndex].text, avg = BENCH[ind]||2.0;
+  var cls = eff < avg*0.9 ? 'good' : eff <= avg ? 'warn' : 'bad';
+  var msg = eff < avg*0.9 ? 'Below '+ind+' avg ('+avg.toFixed(2)+'%) — still room to save'
+    : eff <= avg ? 'Near '+ind+' avg ('+avg.toFixed(2)+'%)'
+    : 'Above '+ind+' avg ('+avg.toFixed(2)+'%) — big savings available';
+  box.innerHTML = '<div class="bench '+cls+'">'+msg+'</div>';
 }
 
-function showErr(msg){el('errBox').textContent=msg;show('errBox');}
-function hideErr(){hide('errBox');}
-function showForm(){show('formView');hide('reviewView');hide('pitchView');window.scrollTo(0,0);}
-function showReview(){hide('formView');show('reviewView');hide('pitchView');window.scrollTo(0,0);}
+function showErr(msg) { el('errBox').textContent = msg; show('errBox'); }
+function hideErr() { hide('errBox'); }
+function showForm() { show('formView'); hide('reviewView'); hide('pitchView'); window.scrollTo(0,0); }
+function showReview() { hide('formView'); show('reviewView'); hide('pitchView'); window.scrollTo(0,0); }
 
-function getAnchor(mo){
-  for(var i=0;i<ANCHORS.length;i++){if(mo>=ANCHORS[i][0]){return ANCHORS[i][1];}}
+function getAnchor(mo) {
+  for(var i = 0; i < ANCHORS.length; i++) {
+    if(mo >= ANCHORS[i][0]) { return ANCHORS[i][1]; }
+  }
   return ANCHORS[ANCHORS.length-1][1];
 }
 
-/* ── HISTORY ── */
-function loadHistory(){
-  try{
-    var raw=localStorage.getItem('ts_history');
-    return raw?JSON.parse(raw):[];
-  }catch(e){return [];}
+function loadHistory() {
+  try { var r = localStorage.getItem('ts_history'); return r ? JSON.parse(r) : []; } catch(e) { return []; }
 }
-function saveHistory(hist){
-  try{localStorage.setItem('ts_history',JSON.stringify(hist));}catch(e){}
+function saveHistory(h) {
+  try { localStorage.setItem('ts_history', JSON.stringify(h)); } catch(e) {}
 }
-function addToHistory(entry){
-  var hist=loadHistory();
-  hist.unshift(entry);
-  if(hist.length>10){hist=hist.slice(0,10);}
+function addToHistory(entry) {
+  var hist = loadHistory(); hist.unshift(entry);
+  if(hist.length > 10) { hist = hist.slice(0,10); }
   saveHistory(hist);
 }
-function clearHistory(){
-  try{localStorage.removeItem('ts_history');}catch(e){}
+function clearHistory() {
+  try { localStorage.removeItem('ts_history'); } catch(e) {}
   renderHistory();
 }
-function renderHistory(){
-  var hist=loadHistory();
-  var panel=el('historyPanel'),list=el('historyList');
-  if(!hist||hist.length===0){panel.classList.add('hidden');return;}
+function renderHistory() {
+  var hist = loadHistory();
+  var panel = el('historyPanel'), list = el('historyList');
+  if(!hist || hist.length === 0) { panel.classList.add('hidden'); return; }
   panel.classList.remove('hidden');
-  list.innerHTML=hist.map(function(h,i){
+  list.innerHTML = hist.map(function(h, i) {
     return '<div class="hist-item" onclick="loadPitch('+i+')">'
-      +'<div><div class="hist-biz">'+h.biz+'</div><div class="hist-meta">'+h.date+' · '+h.indName+'</div></div>'
+      +'<div><div class="hist-biz">'+h.biz+'</div>'
+      +'<div class="hist-meta">'+h.date+' · '+h.indName+(h.mPhone?' · '+h.mPhone:'')+'</div></div>'
       +'<div class="hist-save">'+fmt(h.bestSave)+'/mo</div>'
       +'</div>';
   }).join('');
 }
-function loadPitch(i){
-  var hist=loadHistory();
-  if(!hist[i]){return;}
-  var h=hist[i];
-  el('mBiz').value=h.biz||'';
-  el('mVol').value=h.vol||'';
-  el('mFees').value=h.fees||'';
-  el('mTicket').value=h.ticket||'';
-  el('mPhone').value=h.mPhone||'';
-  el('mEmail').value=h.mEmail||'';
-  if(h.industry){el('mIndustry').value=h.industry;}
+function loadPitch(i) {
+  var hist = loadHistory();
+  if(!hist[i]) { return; }
+  var h = hist[i];
+  el('mBiz').value = h.biz||'';
+  el('mVol').value = h.vol||'';
+  el('mFees').value = h.fees||'';
+  el('mTicket').value = h.ticket||'';
+  el('mPhone').value = h.mPhone||'';
+  el('mEmail').value = h.mEmail||'';
+  if(h.industry) { el('mIndustry').value = h.industry; }
   validateMEmail();
   liveBench();
   showToast('Loaded: '+h.biz);
 }
 
-/* ── REP SAVE/LOAD ── */
-function saveRep(){
-  try{
-    var d={name:el('repName').value.trim(),phone:el('repPhone').value.trim(),prefix:el('repPrefix').value.trim(),industry:el('mIndustry').value};
-    if(d.name){localStorage.setItem('ts_rep',JSON.stringify(d));}
-  }catch(e){}
+function saveRep() {
+  try {
+    var d = { name:el('repName').value.trim(), phone:el('repPhone').value.trim(), prefix:el('repPrefix').value.trim(), industry:el('mIndustry').value };
+    if(d.name) { localStorage.setItem('ts_rep', JSON.stringify(d)); }
+  } catch(e) {}
 }
-function loadRep(){
-  try{
-    var raw=localStorage.getItem('ts_rep');
-    if(!raw){return;}
-    var d=JSON.parse(raw);
-    if(d.name){
-      el('repName').value=d.name;
-      el('repPhone').value=d.phone||'';
-      el('repPrefix').value=d.prefix||'';
+function loadRep() {
+  try {
+    var raw = localStorage.getItem('ts_rep');
+    if(!raw) { return; }
+    var d = JSON.parse(raw);
+    if(d.name) {
+      el('repName').value = d.name;
+      el('repPhone').value = d.phone||'';
+      el('repPrefix').value = d.prefix||'';
       syncEmail();
       show('savedTag');
     }
-    if(d.industry){el('mIndustry').value=d.industry;}
-  }catch(e){}
+    if(d.industry) { el('mIndustry').value = d.industry; }
+  } catch(e) {}
 }
 
-/* ── GENERATE ── */
-function generate(){
+function fireWebhook() {
+  var d = G;
+  if(!WEBHOOK || !d.biz) { return; }
+  var payload = {
+    date: new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),
+    repName: d.rep.name,
+    repPhone: d.rep.phone,
+    repEmail: d.rep.email,
+    biz: d.biz,
+    mPhone: d.mPhone||'',
+    mEmail: d.mEmail||'',
+    indName: d.indName,
+    vol: d.vol,
+    fees: d.fees,
+    effRate: fmtP(d.effRate),
+    bestSave: fmt(d.bestSave),
+    bestAnn: fmt(d.bestAnn),
+    status: 'New Lead'
+  };
+  fetch(WEBHOOK, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).catch(function(){});
+}
+
+function renderSendBar() {
+  var d = G;
+  var bar = el('sendBar');
+  var ph = d.mPhone||'', em = d.mEmail||'';
+  var html = '';
+  if(ph) { html += '<button class="send-opt send-sms" id="btnSMS" onclick="doSend(\'sms\')">Text '+ph+'</button>'; }
+  if(em) { html += '<button class="send-opt send-email" id="btnEmail" onclick="doSend(\'email\')">Email '+em+'</button>'; }
+  if(!ph && !em) { html = '<button class="send-opt send-copy" onclick="doSend(\'copy\')">Copy / Share Summary</button>'; }
+  bar.innerHTML = html;
+}
+
+function doSend(channel) {
+  var d = G;
+  if(!d.biz) { showToast('Generate a review first.'); return; }
+  var txt = summaryText();
+  if(channel === 'sms') {
+    var num = (d.mPhone||'').replace(/\D/g,'');
+    window.location.href = 'sms:'+num+';?&body='+encodeURIComponent(txt);
+    markSent('btnSMS');
+  } else if(channel === 'email') {
+    window.location.href = 'mailto:'+(d.mEmail||'')+'?subject='+encodeURIComponent('Your Rate Review — '+d.biz)+'&body='+encodeURIComponent(txt);
+    markSent('btnEmail');
+  } else {
+    if(navigator.share) {
+      navigator.share({title:'Rate Review — '+d.biz, text:txt}).catch(function(){});
+    } else {
+      navigator.clipboard.writeText(txt).then(function(){ showToast('Summary copied!'); }).catch(function(){
+        var ta = document.createElement('textarea'); ta.value = txt;
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('Summary copied!');
+      });
+    }
+  }
+}
+
+function markSent(btnId) {
+  var btn = el(btnId);
+  if(!btn) { return; }
+  var orig = btn.textContent;
+  btn.textContent = '✓ Sent';
+  btn.classList.add('sent');
+  setTimeout(function(){ btn.textContent = orig; btn.classList.remove('sent'); }, 3000);
+}
+
+function generate() {
   hideErr();
-  if(!sanityCheck()){showErr('Please fix the highlighted fields before generating.');return;}
-  var repName=el('repName').value.trim();
-  if(!repName){showErr('Please enter your name.');return;}
-  var vol=clean(el('mVol').value),fees=clean(el('mFees').value);
-  if(!vol||!fees){showErr('Please enter Monthly Volume and Total Fees.');return;}
+  if(!sanityCheck()) { showErr('Please fix the highlighted fields before generating.'); return; }
+  var repName = el('repName').value.trim();
+  if(!repName) { showErr('Please enter your name.'); return; }
+  var vol = clean(el('mVol').value), fees = clean(el('mFees').value);
+  if(!vol || !fees) { showErr('Please enter Monthly Volume and Total Fees.'); return; }
 
   saveRep();
 
-  var sel=el('mIndustry'),parts=sel.value.split('|');
-  var indName=sel.options[sel.selectedIndex].text;
-  var icRate=parseFloat(parts[0])/100,indAvg=BENCH[indName]||2.0,cdFriendly=(parts[2]!=='high');
-  var ticket=clean(el('mTicket').value)||85,txns=Math.round(vol/ticket);
-  var biz=el('mBiz').value.trim()||'Valued Merchant';
-  var contact=el('mPhone').value.trim()+'|'+el('mEmail').value.trim();
-  var rep={name:repName,phone:el('repPhone').value.trim(),email:el('repEmail').value.trim()};
+  var sel = el('mIndustry'), parts = sel.value.split('|');
+  var indName = sel.options[sel.selectedIndex].text;
+  var icRate = parseFloat(parts[0])/100, indAvg = BENCH[indName]||2.0, cdFriendly = (parts[2] !== 'high');
+  var ticket = clean(el('mTicket').value)||85, txns = Math.round(vol/ticket);
+  var biz = el('mBiz').value.trim()||'Valued Merchant';
+  var mPhone = el('mPhone').value.trim();
+  var mEmail = el('mEmail').value.trim();
+  var rep = { name:repName, phone:el('repPhone').value.trim(), email:el('repEmail').value.trim() };
 
-  var icTotal=(vol*icRate)+(txns*ICTXN),effRate=fees/vol,txnCost=fees/txns;
-  var uPct=MKP_PCT,uTxn=MKP_TXN;
-  var o1mo=icTotal+(vol*uPct)+(txns*uTxn)+O1FEE;
-  if(o1mo>=fees){uPct=WP_PCT+0.001;uTxn=WP_TXN+0.02;o1mo=icTotal+(vol*uPct)+(txns*uTxn)+O1FEE;}
-  if(o1mo>=fees*0.90){o1mo=fees*0.90;}
-  if(o1mo<O1FEE){o1mo=O1FEE;}
-  var o1save=fees-o1mo,o1ann=o1save*12,o1txnCost=o1mo/txns;
-  var o2save=fees-O2FEE,o2ann=o2save*12,o2txnCost=O2FEE/txns;
-  var avgT=vol/txns,cda=avgT*0.04;
-  var rec=(!cdFriendly||ticket>=150)?1:(o2save>o1save?2:1);
-  var bestSave=rec===1?o1save:o2save,bestAnn=rec===1?o1ann:o2ann;
-  var mPhone=el('mPhone').value.trim();
-  var mEmail=el('mEmail').value.trim();
+  var icTotal = (vol*icRate)+(txns*ICTXN), effRate = fees/vol, txnCost = fees/txns;
+  var uPct = MKP_PCT, uTxn = MKP_TXN;
+  var o1mo = icTotal+(vol*uPct)+(txns*uTxn)+O1FEE;
+  if(o1mo >= fees) { uPct = WP_PCT+0.001; uTxn = WP_TXN+0.02; o1mo = icTotal+(vol*uPct)+(txns*uTxn)+O1FEE; }
+  if(o1mo >= fees*0.90) { o1mo = fees*0.90; }
+  if(o1mo < O1FEE) { o1mo = O1FEE; }
+  var o1save = fees-o1mo, o1ann = o1save*12, o1txnCost = o1mo/txns;
+  var o2save = fees-O2FEE, o2ann = o2save*12, o2txnCost = O2FEE/txns;
+  var avgT = vol/txns, cda = avgT*0.04;
+  var rec = (!cdFriendly||ticket>=150) ? 1 : (o2save > o1save ? 2 : 1);
+  var bestSave = rec===1 ? o1save : o2save, bestAnn = rec===1 ? o1ann : o2ann;
 
-  G={biz:biz,vol:vol,fees:fees,effRate:effRate,txnCost:txnCost,indName:indName,indAvg:indAvg,
-    avgT:avgT,cda:cda,rec:rec,cdFriendly:cdFriendly,bestSave:bestSave,bestAnn:bestAnn,
-    mPhone:mPhone,mEmail:mEmail,contact:contact,rep:rep,ticket:ticket,
-    opt1:{pct:uPct,mo:o1mo,save:o1save,ann:o1ann,txnCost:o1txnCost},
-    opt2:{mo:O2FEE,save:o2save,ann:o2ann,txnCost:o2txnCost}};
+  G = {
+    biz:biz, vol:vol, fees:fees, effRate:effRate, txnCost:txnCost,
+    indName:indName, indAvg:indAvg, avgT:avgT, cda:cda, rec:rec, cdFriendly:cdFriendly,
+    bestSave:bestSave, bestAnn:bestAnn, mPhone:mPhone, mEmail:mEmail, rep:rep, ticket:ticket,
+    opt1:{pct:uPct, mo:o1mo, save:o1save, ann:o1ann, txnCost:o1txnCost},
+    opt2:{mo:O2FEE, save:o2save, ann:o2ann, txnCost:o2txnCost}
+  };
 
-  addToHistory({biz:biz,vol:el('mVol').value,fees:el('mFees').value,ticket:el('mTicket').value,
-    mPhone:mPhone,mEmail:mEmail,industry:sel.value,indName:indName,bestSave:bestSave,
-    date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'})});
+  addToHistory({
+    biz:biz, vol:el('mVol').value, fees:el('mFees').value, ticket:el('mTicket').value,
+    mPhone:mPhone, mEmail:mEmail, industry:sel.value, indName:indName, bestSave:bestSave,
+    date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'})
+  });
 
+  fireWebhook();
   renderReview();
   renderSendBar();
-  var mob=isMobile();
-  el('printBtn').textContent=mob?'Share':'Save / Print';
-  el('urgBtn').textContent=mob?'Share':'Save / Print';
-  if(mob){show('printHint');}
-  hide('formView');show('reviewView');hide('pitchView');
+  renderHistory();
+
+  var mob = isMobile();
+  el('printBtn').textContent = mob ? 'Share' : 'Save / Print';
+  el('urgBtn').textContent = mob ? 'Share' : 'Save / Print';
+  el('pitchPrintBtn').textContent = mob ? 'Share' : 'Save / Print';
+  if(mob) { show('printHint'); }
+  hide('formView'); show('reviewView'); hide('pitchView');
   window.scrollTo(0,0);
 }
 
-function renderReview(){
-  var d=G;
-  var now=new Date();
-  var dateStr=now.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-  el('hBiz').textContent=d.biz;
-  el('hMeta').textContent=d.indName+' · Avg ticket '+fmt(d.avgT)+' · '+dateStr;
-  el('prepDate').textContent=dateStr;
-  el('ftName').textContent=d.rep.name;el('ftPhone').textContent=d.rep.phone;el('ftEmail').textContent=d.rep.email;
+function renderReview() {
+  var d = G;
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  el('hBiz').textContent = d.biz;
+  el('hMeta').textContent = d.indName+' · Avg ticket '+fmt(d.avgT)+' · '+dateStr;
+  el('prepDate').textContent = dateStr;
+  el('ftName').textContent = d.rep.name;
+  el('ftPhone').textContent = d.rep.phone;
+  el('ftEmail').textContent = d.rep.email;
 
-  var rb='<div class="rec">Recommended</div>';
-  el('o1rec').innerHTML=d.rec===1?rb:'';el('o2rec').innerHTML=d.rec===2?rb:'';
-  el('opt1Cell').classList.toggle('dimmed',d.rec!==1);
-  el('opt2Cell').classList.toggle('dimmed',d.rec!==2);
+  var rb = '<div class="rec">Recommended</div>';
+  el('o1rec').innerHTML = d.rec===1 ? rb : '';
+  el('o2rec').innerHTML = d.rec===2 ? rb : '';
+  el('opt1Cell').classList.toggle('dimmed', d.rec!==1);
+  el('opt2Cell').classList.toggle('dimmed', d.rec!==2);
 
-  el('costsRow').innerHTML=
+  el('costsRow').innerHTML =
     [['Monthly Volume',fmt(d.vol),false],['Total Fees',fmt(d.fees),true],
      ['Effective Rate',fmtP(d.effRate),true],['Cost / Transaction',fmt(d.txnCost),true]]
-    .map(function(x){return '<div class="metric"><div class="ml">'+x[0]+'</div><div class="mv'+(x[2]?' red':'')+'">'+x[1]+'</div></div>';}).join('');
+    .map(function(x){ return '<div class="metric"><div class="ml">'+x[0]+'</div><div class="mv'+(x[2]?' red':'')+'">'+x[1]+'</div></div>'; }).join('');
 
-  var eff=d.effRate*100;
-  var brc=eff<d.indAvg*0.9?'br-good':eff<=d.indAvg?'br-warn':'br-bad';
-  var brm=eff<d.indAvg*0.9?'Below '+d.indName+' avg ('+d.indAvg.toFixed(2)+'%) — still room to improve':eff<=d.indAvg?'Near '+d.indName+' avg ('+d.indAvg.toFixed(2)+'%)':'Above '+d.indName+' avg ('+d.indAvg.toFixed(2)+'%) — significant savings available';
-  el('benchResult').innerHTML='<div class="bench-result '+brc+'">'+brm+'</div>';
+  var eff = d.effRate*100;
+  var brc = eff < d.indAvg*0.9 ? 'br-good' : eff <= d.indAvg ? 'br-warn' : 'br-bad';
+  var brm = eff < d.indAvg*0.9 ? 'Below '+d.indName+' avg ('+d.indAvg.toFixed(2)+'%) — still room to improve'
+    : eff <= d.indAvg ? 'Near '+d.indName+' avg ('+d.indAvg.toFixed(2)+'%)'
+    : 'Above '+d.indName+' avg ('+d.indAvg.toFixed(2)+'%) — significant savings available';
+  el('benchResult').innerHTML = '<div class="bench-result '+brc+'">'+brm+'</div>';
 
-  el('o1formula').textContent='Interchange + '+(d.opt1.pct*100).toFixed(2)+'% + $'+MKP_TXN.toFixed(2)+'/txn + $'+O1FEE.toFixed(2)+'/mo';
-  el('o1nums').innerHTML='<div class="num-box"><div class="num-lbl">New Monthly Cost</div><div class="num-val1">'+fmt(d.opt1.mo)+'</div></div><div class="num-box"><div class="num-lbl">You Save / Month</div><div class="num-val1">'+fmt(d.opt1.save)+'</div></div>';
-  el('o1banner').textContent='Save '+fmt(d.opt1.ann)+' this year';
-  el('o2nums').innerHTML='<div class="num-box"><div class="num-lbl">New Monthly Cost</div><div class="num-val2">'+fmt(d.opt2.mo)+'</div></div><div class="num-box"><div class="num-lbl">You Save / Month</div><div class="num-val2">'+fmt(d.opt2.save)+'</div></div>';
-  el('o2banner').textContent='Save '+fmt(d.opt2.ann)+' this year';
+  el('o1formula').textContent = 'Interchange + '+(d.opt1.pct*100).toFixed(2)+'% + $'+MKP_TXN.toFixed(2)+'/txn + $'+O1FEE.toFixed(2)+'/mo';
+  el('o1nums').innerHTML =
+    '<div class="num-box"><div class="num-lbl">New Monthly Cost</div><div class="num-val1">'+fmt(d.opt1.mo)+'</div></div>'+
+    '<div class="num-box"><div class="num-lbl">You Save / Month</div><div class="num-val1">'+fmt(d.opt1.save)+'</div></div>';
+  el('o1banner').textContent = 'Save '+fmt(d.opt1.ann)+' this year';
 
-  el('cdHow').innerHTML='<strong>How it works:</strong> Your prices stay the same. Card-paying customers cover a small 4% service fee — you keep every dollar of every sale. '
+  el('o2nums').innerHTML =
+    '<div class="num-box"><div class="num-lbl">New Monthly Cost</div><div class="num-val2">'+fmt(d.opt2.mo)+'</div></div>'+
+    '<div class="num-box"><div class="num-lbl">You Save / Month</div><div class="num-val2">'+fmt(d.opt2.save)+'</div></div>';
+  el('o2banner').textContent = 'Save '+fmt(d.opt2.ann)+' this year';
+
+  el('cdHow').innerHTML = '<strong>How it works:</strong> Your prices stay the same. Card-paying customers cover a small 4% service fee — you keep every dollar of every sale. '
     +'The '+fmt(d.cda)+' fee on a '+fmt(d.avgT)+' ticket is paid by the customer, not you.';
 
-  el('txnRow').innerHTML='<span class="txn-label">Cost per transaction</span><div class="txn-pills"><span class="txn-pill txn-current">Now: '+fmt(d.txnCost)+'</span><span class="txn-pill txn-o1">Option 1: '+fmt(d.opt1.txnCost)+'</span><span class="txn-pill txn-o2">Option 2: '+fmt(d.opt2.txnCost)+'</span></div>';
+  el('txnRow').innerHTML =
+    '<span class="txn-label">Cost per transaction</span>'
+    +'<div class="txn-pills">'
+    +'<span class="txn-pill txn-current">Now: '+fmt(d.txnCost)+'</span>'
+    +'<span class="txn-pill txn-o1">Option 1: '+fmt(d.opt1.txnCost)+'</span>'
+    +'<span class="txn-pill txn-o2">Option 2: '+fmt(d.opt2.txnCost)+'</span>'
+    +'</div>';
 
-  el('urgAmt').textContent=fmt(d.bestSave/30.4);
-  el('urgSub').textContent=fmt(d.bestSave)+' / month · '+fmt(d.bestAnn)+' / year';
+  el('urgAmt').textContent = fmt(d.bestSave/30.4);
+  el('urgSub').textContent = fmt(d.bestSave)+' / month · '+fmt(d.bestAnn)+' / year';
 }
 
-function summaryText(){
-  var d=G;if(!d.biz){return '';}
-  var recLabel=d.rec===1?'Interchange Plus — save '+fmt(d.opt1.save)+'/mo':'Cash Discount — save '+fmt(d.opt2.save)+'/mo';
-  var annSave=d.rec===1?d.opt1.ann:d.opt2.ann;
+function summaryText() {
+  var d = G;
+  if(!d.biz) { return ''; }
+  var recLabel = d.rec===1 ? 'Interchange Plus — save '+fmt(d.opt1.save)+'/mo' : 'Cash Discount — save '+fmt(d.opt2.save)+'/mo';
+  var annSave = d.rec===1 ? d.opt1.ann : d.opt2.ann;
   return 'Hi, '+d.biz+'! Here\'s your rate review from Team Steel.\n\n'
     +'What you\'re currently paying:\n'
     +'  Monthly fees: '+fmt(d.fees)+'\n'
@@ -661,68 +775,19 @@ function summaryText(){
     +'Estimate based on provided figures. Final rate confirmed at approval.';
 }
 
-function validateMEmail(){
-  var v=el('mEmail').value.trim();
-  var chk=el('mEmailCheck');
-  if(v.indexOf('@')>0&&v.indexOf('.')>v.indexOf('@')){
-    chk.classList.remove('hidden');
-  } else {
-    chk.classList.add('hidden');
-  }
-}
-
-function renderSendBar(){
-  var d=G;
-  var bar=el('sendBar');
-  if(!d.biz){bar.innerHTML='';return;}
-  var ph=d.mPhone||'';
-  var em=d.mEmail||'';
-  var html='';
-  if(ph){html+='<button class="send-opt send-sms" id="btnSMS" onclick="doSend(\'sms\')">Text '+ph+'</button>';}
-  if(em){html+='<button class="send-opt send-email" id="btnEmail" onclick="doSend(\'email\')">Email '+em+'</button>';}
-  if(!ph&&!em){html='<button class="send-opt send-sms" style="flex:1;background:#f7fafd;border-color:#dce8f5;color:#555" onclick="doSend(\'share\')">Copy / Share Summary</button>';}
-  bar.innerHTML=html;
-}
-
-function doSend(channel){
-  var d=G;if(!d.biz){showToast('Generate a review first.');return;}
-  var txt=summaryText();
-  if(channel==='sms'){
-    var num=(d.mPhone||'').replace(/\D/g,'');
-    window.location.href='sms:'+num+';?&body='+encodeURIComponent(txt);
-    markSent('btnSMS');
-  } else if(channel==='email'){
-    window.location.href='mailto:'+(d.mEmail||'')+'?subject='+encodeURIComponent('Your Rate Review — '+d.biz)+'&body='+encodeURIComponent(txt);
-    markSent('btnEmail');
-  } else {
-    if(navigator.share){navigator.share({title:'Rate Review — '+d.biz,text:txt}).catch(function(){});}
-    else{navigator.clipboard.writeText(txt).then(function(){showToast('Summary copied!');}).catch(function(){
-      var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-      showToast('Summary copied!');
-    });}
-  }
-}
-
-function markSent(btnId){
-  var btn=el(btnId);
-  if(!btn){return;}
-  var orig=btn.textContent;
-  btn.textContent='✓ Sent';
-  btn.classList.add('sent');
-  setTimeout(function(){btn.textContent=orig;btn.classList.remove('sent');},3000);
-}
-
-function showPitch(){
-  var d=G;if(!d.biz){showToast('Generate a review first.');return;}
-  el('pitchBiz').textContent=d.biz;
-  el('pitchRate').textContent=fmtP(d.effRate);
-  el('pitchFeeSub').textContent=fmt(d.fees)+' in fees on '+fmt(d.vol)+' in volume';
-  el('pitchSave').textContent=fmt(d.bestSave)+'/mo';
-  el('pitchSaveSub').textContent=fmt(d.bestAnn)+' / year · '+fmt(d.bestSave/30.4)+' / day';
-  el('pitchAnchor').textContent=getAnchor(d.bestSave);
-  el('pitchRepName').textContent=d.rep.name;el('pitchRepPhone').textContent=d.rep.phone;el('pitchRepEmail').textContent=d.rep.email;
-  el('pitchPrintBtn').textContent=isMobile()?'Share':'Save / Print';
-  hide('reviewView');show('pitchView');window.scrollTo(0,0);
+function showPitch() {
+  var d = G;
+  if(!d.biz) { showToast('Generate a review first.'); return; }
+  el('pitchBiz').textContent = d.biz;
+  el('pitchRate').textContent = fmtP(d.effRate);
+  el('pitchFeeSub').textContent = fmt(d.fees)+' in fees on '+fmt(d.vol)+' in volume';
+  el('pitchSave').textContent = fmt(d.bestSave)+'/mo';
+  el('pitchSaveSub').textContent = fmt(d.bestAnn)+' / year · '+fmt(d.bestSave/30.4)+' / day';
+  el('pitchAnchor').textContent = getAnchor(d.bestSave);
+  el('pitchRepName').textContent = d.rep.name;
+  el('pitchRepPhone').textContent = d.rep.phone;
+  el('pitchRepEmail').textContent = d.rep.email;
+  hide('reviewView'); show('pitchView'); window.scrollTo(0,0);
 }
 
 loadRep();
