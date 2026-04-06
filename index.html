@@ -673,7 +673,7 @@ function generate() {
   var o1save = fees-o1mo, o1ann = o1save*12, o1txnCost = o1mo/txns;
   var o2save = fees-O2FEE, o2ann = o2save*12, o2txnCost = O2FEE/txns;
   var avgT = vol/txns, cda = avgT*0.04;
-  var rec = (!cdFriendly||ticket>=150) ? 1 : (o2save > o1save ? 2 : 1);
+  var rec = 2;
   var bestSave = rec===1 ? o1save : o2save, bestAnn = rec===1 ? o1ann : o2ann;
 
   G = {
